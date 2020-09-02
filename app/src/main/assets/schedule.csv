@@ -1,0 +1,135 @@
+﻿Wake up,25200,0,7,0
+Jerks,26100,0,7,15
+Breakfast,27600,0,7,40
+Geomenty/Physprak,31200,0,8,40
+Break,33900,0,9,25
+Geomenty/Physprak,34500,0,9,35
+2nd breakfast,37200,0,10,20
+Physprak/Geomenty,38100,0,10,35
+Break,40800,0,11,20
+Physprak/Geomenty,41100,0,11,25
+Break,43800,0,12,10
+Gym class,44400,0,12,20
+Break,47100,0,13,5
+Biology,47700,0,13,15
+Lunch,50700,0,14,5
+SP,57600,0,16,0
+Nooning,63600,0,17,40
+Ending of SP,68400,0,19,0
+Dinner,70800,0,19,40
+Shower closing,78300,0,21,45
+Retire,81000,0,22,30
+Wake up,111600,1,7,0
+Jerks,112500,1,7,15
+Breakfast,114000,1,7,40
+Physics,117600,1,8,40
+Break,120300,1,9,25
+Physics,120900,1,9,35
+2nd breakfast,123600,1,10,20
+English language,124500,1,10,35
+Break,127200,1,11,20
+Gym class,127500,1,11,25
+Break,130200,1,12,10
+Ukr lit,130800,1,12,20
+Break,133500,1,13,5
+Ukr lit,134100,1,13,15
+Lunch,137100,1,14,5
+SP,144000,1,16,0
+Nooning,150000,1,17,40
+Ending of SP,154800,1,19,0
+Dinner,157200,1,19,40
+Shower closing,164700,1,21,45
+Retire,167400,1,22,30
+Wake up,198000,2,7,0
+Jerks,198900,2,7,15
+Breakfast,200400,2,7,40
+Algebra,204000,2,8,40
+Break,206700,2,9,25
+English language,207300,2,9,35
+2nd breakfast,210000,2,10,20
+Algebra/Physics,210900,2,10,35
+Break,213600,2,11,20
+Algebra/Physics,213900,2,11,25
+Break,216600,2,12,10
+Physics/Algebra,217200,2,12,20
+Break,219900,2,13,5
+Physics/Algebra,220500,2,13,15
+Lunch,223500,2,14,5
+SP,230400,2,16,0
+Nooning,236400,2,17,40
+Ending of SP,241200,2,19,0
+Dinner,243600,2,19,40
+Shower closing,251100,2,21,45
+Retire,253800,2,22,30
+Wake up,284400,3,7,0
+Jerks,285300,3,7,15
+Breakfast,286800,3,7,40
+Geometry,290400,3,8,40
+Break,293100,3,9,25
+Geometry,293700,3,9,35
+2nd breakfast,296400,3,10,20
+Chemistry,297300,3,10,35
+Break,300000,3,11,20
+Ukr history,300300,3,11,25
+Break,303000,3,12,10
+Informatics,303600,3,12,20
+Break,306300,3,13,5
+Informatics,306900,3,13,15
+Break,309600,3,14,0
+Astronomy/Art,310200,3,14,10
+Lunch,309900,3,14,5
+SP,316800,3,16,0
+Nooning,322800,3,17,40
+Ending of SP,327600,3,19,0
+Dinner,330000,3,19,40
+Shower closing,337500,3,21,45
+Retire,340200,3,22,30
+Wake up,370800,4,7,0
+Jerks,371700,4,7,15
+Breakfast,373200,4,7,40
+Ukr language,376800,4,8,40
+Break,379500,4,9,25
+Ukr language,380100,4,9,35
+2nd breakfast,382800,4,10,20
+Geography,383700,4,10,35
+Break,386400,4,11,20
+World history,386700,4,11,25
+Break,389400,4,12,10
+Physics,390000,4,12,20
+Break,392700,4,13,5
+Physics,393300,4,13,15
+Lunch,396300,4,14,5
+SP,403200,4,16,0
+Nooning,409200,4,17,40
+Ending of SP,414000,4,19,0
+Dinner,416400,4,19,40
+Shower closing,423900,4,21,45
+Retire,426600,4,22,30
+Wake up,457200,5,7,0
+Jerks,458100,5,7,15
+Breakfast,459600,5,7,40
+Gym class,463200,5,8,40
+Break,465900,5,9,25
+English language,466500,5,9,35
+2nd breakfast,469200,5,10,20
+Algebra,470100,5,10,35
+Break,472800,5,11,20
+Algebra,473100,5,11,25
+Break,475800,5,12,10
+Inf tech,476400,5,12,20
+Break,479100,5,13,5
+Pretection,479700,5,13,15
+Lunch,482700,5,14,5
+SP,489600,5,16,0
+Nooning,495600,5,17,40
+Ending of SP,500400,5,19,0
+Dinner,502800,5,19,40
+Shower closing,510300,5,21,45
+Retire,513000,5,22,30
+Wake up,543600,6,7,0
+Jerks,544500,6,7,15
+Breakfast,549900,6,8,45
+Lunch,568800,6,14,0
+Dinner,586800,6,19,0
+Shower closing,596700,6,21,45
+Retire,599400,6,22,30
