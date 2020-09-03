@@ -12,7 +12,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/fff"
-        android:text="TextView"
         android:textColor="#000000"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/EventTime"
@@ -25,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:fontFamily="@font/fff"
-        android:text="TextView"
+        android:text="Loading"
         android:textColor="#000000"
         android:textSize="50sp"
         app:layout_constraintBottom_toTopOf="@+id/NextEvent"
@@ -38,7 +37,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/fff"
-        android:text="TextView"
         android:textAlignment="center"
         android:textColor="#000"
         android:textSize="18sp"
@@ -47,5 +45,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/EventTime"
         app:layout_constraintVertical_bias="0.65999997" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Stop playing"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

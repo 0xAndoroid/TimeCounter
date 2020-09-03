@@ -4,11 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Context;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.util.Pair;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.time.DayOfWeek;
@@ -24,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
     LocalDateTime startOfWeek;
     Vibrator v;
+    boolean played = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,10 +34,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         now = LocalDateTime.now();
         events = new ArrayList<>();
-        v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);;
+        v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
         startOfWeek = LocalDateTime.of(now.getYear(), now.getMonth(), now.getDayOfMonth(), 0,0);
         startOfWeek = startOfWeek.minusDays(now.getDayOfWeek().compareTo(DayOfWeek.MONDAY));
+
+
+        final MediaPlayer mPlayer = MediaPlayer.create(this, R.raw.ring);
+        mPlayer.setLooping(true);
 
         final TextView eventName = findViewById(R.id.EventName);
         final TextView eventTime = findViewById(R.id.EventTime);
@@ -45,6 +52,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 v.setBackgroundColor((int)(Math.random()*0xFF000000));
                 //v.setBackground(getResources().getDrawable(R.drawable.test));
+            }
+        });
+
+        final Button button = findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mPlayer.stop();
+                button.setVisibility(View.INVISIBLE);
             }
         });
 
@@ -77,7 +93,14 @@ public class MainActivity extends AppCompatActivity {
 
                                 eventName.setText(events.get(index).first);
                                 long s = events.get(index).second-secsBetweenNowAndStart;
-                                if(s <= 5) v.vibrate(VibrationEffect.createOneShot(5000, VibrationEffect.DEFAULT_AMPLITUDE));
+                                if(s <= 5 && !played) {
+                                    v.vibrate(VibrationEffect.createOneShot(5000, VibrationEffect.DEFAULT_AMPLITUDE));
+                                    mPlayer.start();
+                                    played = true;
+                                    button.setVisibility(View.VISIBLE);
+                                } else if(s > 5){
+                                    played = false;
+                                }
                                 long h = s/3600;
                                 s -=h*3600;
                                 long m = s/60;
