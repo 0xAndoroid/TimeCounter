@@ -3,6 +3,7 @@ package xyz.andoroid.timecounter;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.app.NotificationManager;
 import android.content.Context;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
+import xyz.andoroid.timecounter.model.NotificationUtils;
 import xyz.andoroid.timecounter.model.ReaderUtils;
 import xyz.andoroid.timecounter.model.TimeUtils;
 
@@ -29,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
     private LocalDateTime startOfWeek;
     private Vibrator v;
+    private NotificationUtils notificationUtils;
 
     private boolean played = false;
 
@@ -39,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         now = LocalDateTime.now();
         events = new ArrayList<>();
         v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        notificationUtils = new NotificationUtils((NotificationManager)getSystemService(NOTIFICATION_SERVICE), this);
 
         startOfWeek = LocalDateTime.of(now.getYear(), now.getMonth(), now.getDayOfMonth(), 0,0);
         startOfWeek = startOfWeek.minusDays(now.getDayOfWeek().compareTo(DayOfWeek.MONDAY));
@@ -75,7 +79,6 @@ public class MainActivity extends AppCompatActivity {
             pr = new Pair<>(ss[0], Long.parseLong(ss[1]));
             events.add(pr);
         }
-        System.out.println(allTextLines.get(0));
 
         final Thread thread = new Thread() {
             @Override
@@ -104,6 +107,7 @@ public class MainActivity extends AppCompatActivity {
                                     button.setVisibility(View.VISIBLE);
                                 } else if(s > 0) played = false;
                                 eventTime.setText(TimeUtils.convertFromSeconds(s,true));
+                                notificationUtils.showNotification(0, events.get(index).first, TimeUtils.convertFromSeconds(s,true));
 
 
                                 StringBuilder next = new StringBuilder();
