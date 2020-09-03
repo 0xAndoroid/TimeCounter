@@ -77,7 +77,7 @@ Break,306300,3,13,5
 Informatics,306900,3,13,15
 Break,309600,3,14,0
 Astronomy/Art,310200,3,14,10
-Lunch,309900,3,14,5
+Lunch,312900,3,14,55
 SP,316800,3,16,0
 Nooning,322800,3,17,40
 Ending of SP,327600,3,19,0
@@ -118,11 +118,8 @@ Algebra,473100,5,11,25
 Break,475800,5,12,10
 Inf tech,476400,5,12,20
 Break,479100,5,13,5
-Pretection,479700,5,13,15
+Protection,479700,5,13,15
 Lunch,482700,5,14,5
-SP,489600,5,16,0
-Nooning,495600,5,17,40
-Ending of SP,500400,5,19,0
 Dinner,502800,5,19,40
 Shower closing,510300,5,21,45
 Retire,513000,5,22,30

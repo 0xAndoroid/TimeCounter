@@ -1,4 +1,4 @@
-package xyz.andoroid.timecounter;
+package xyz.andoroid.timecounter.model;
 
 import android.content.Context;
 import android.content.res.AssetManager;
@@ -10,10 +10,10 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-public class QuoteBank {
+public class ReaderUtils {
     private Context mContext;
 
-    public QuoteBank(Context context) {
+    public ReaderUtils(Context context) {
         this.mContext = context;
     }
 

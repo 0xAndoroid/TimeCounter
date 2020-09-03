@@ -19,14 +19,18 @@ import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
+import xyz.andoroid.timecounter.model.ReaderUtils;
+import xyz.andoroid.timecounter.model.TimeUtils;
+
 public class MainActivity extends AppCompatActivity {
-    LocalDateTime now;
+    private LocalDateTime now;
 
-    List<Pair<String, Long>> events;
+    private List<Pair<String, Long>> events;
 
-    LocalDateTime startOfWeek;
-    Vibrator v;
-    boolean played = false;
+    private LocalDateTime startOfWeek;
+    private Vibrator v;
+
+    private boolean played = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 v.setBackgroundColor((int)(Math.random()*0xFF000000));
-                //v.setBackground(getResources().getDrawable(R.drawable.test));
             }
         });
 
@@ -59,12 +62,12 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mPlayer.stop();
+                mPlayer.pause();
                 button.setVisibility(View.INVISIBLE);
             }
         });
 
-        QuoteBank qb = new QuoteBank(this);
+        ReaderUtils qb = new ReaderUtils(this);
         List<String> allTextLines = qb.readLine("schedule.csv");
         String[] ss;Pair<String, Long> pr;
         for(String s : allTextLines) {
@@ -72,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
             pr = new Pair<>(ss[0], Long.parseLong(ss[1]));
             events.add(pr);
         }
+        System.out.println(allTextLines.get(0));
 
         final Thread thread = new Thread() {
             @Override
@@ -93,31 +97,18 @@ public class MainActivity extends AppCompatActivity {
 
                                 eventName.setText(events.get(index).first);
                                 long s = events.get(index).second-secsBetweenNowAndStart;
-                                if(s <= 5 && !played) {
+                                if(s <= 0 && !played) {
                                     v.vibrate(VibrationEffect.createOneShot(5000, VibrationEffect.DEFAULT_AMPLITUDE));
                                     mPlayer.start();
                                     played = true;
                                     button.setVisibility(View.VISIBLE);
-                                } else if(s > 5){
-                                    played = false;
-                                }
-                                long h = s/3600;
-                                s -=h*3600;
-                                long m = s/60;
-                                s-=m*60;
-                                eventTime.setText(h+":"+m+":"+s);
+                                } else if(s > 0) played = false;
+                                eventTime.setText(TimeUtils.convertFromSeconds(s,true));
 
-                                String next = "";
-                                for(int i=index+1;i<index+9 && i<events.size();i++) {
-                                    s = events.get(i).second-secsBetweenNowAndStart;
-                                    h = s/3600;
-                                    s -=h*3600;
-                                    m = s/60;
-                                    s-=m*60;
-                                    next+=events.get(i).first+" ";
-                                    next+=h+":"+m+":"+s;
-                                    next+="\n";
-                                }
+
+                                StringBuilder next = new StringBuilder();
+                                for(int i=index+1;i<index+11 && i<events.size();i++)
+                                    next.append(events.get(i).first).append(" ").append(TimeUtils.convertFromSeconds(events.get(i).second-secsBetweenNowAndStart,false)).append("\n");
 
                                 nextEvent.setText(next);
 
@@ -125,8 +116,7 @@ public class MainActivity extends AppCompatActivity {
                             }
                         });
                     }
-                } catch (InterruptedException e) {
-                }
+                } catch (InterruptedException ignored) {}
             }
         };
 
