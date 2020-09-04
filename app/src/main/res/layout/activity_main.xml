@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:fontFamily="@font/fff"
-        android:text="Loading"
+        android:text="@string/loading"
         android:textColor="#000000"
         android:textSize="50sp"
         app:layout_constraintBottom_toTopOf="@+id/NextEvent"
@@ -46,13 +46,16 @@
         app:layout_constraintTop_toBottomOf="@+id/EventTime"
         app:layout_constraintVertical_bias="0.65999997" />
 
-    <Button
-        android:id="@+id/button"
+    <Switch
+        android:id="@+id/ringSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Stop playing"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:layout_marginTop="16dp"
+        android:checked="true"
+        android:text="Ring"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/NextEvent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

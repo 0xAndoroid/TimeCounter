@@ -4,22 +4,22 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.app.NotificationManager;
-import android.content.Context;
-import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.os.VibrationEffect;
-import android.os.Vibrator;
 import android.util.Pair;
 import android.view.View;
-import android.widget.Button;
+import android.widget.Switch;
 import android.widget.TextView;
 
-import java.time.DayOfWeek;
-import java.time.LocalDateTime;
-import java.time.temporal.ChronoUnit;
+import com.jakewharton.threetenabp.AndroidThreeTen;
+
+import org.threeten.bp.DayOfWeek;
+import org.threeten.bp.LocalDateTime;
+import org.threeten.bp.temporal.ChronoUnit;
+
 import java.util.ArrayList;
 import java.util.List;
 
+import xyz.andoroid.timecounter.model.MusicUtils;
 import xyz.andoroid.timecounter.model.NotificationUtils;
 import xyz.andoroid.timecounter.model.ReaderUtils;
 import xyz.andoroid.timecounter.model.TimeUtils;
@@ -30,26 +30,23 @@ public class MainActivity extends AppCompatActivity {
     private List<Pair<String, Long>> events;
 
     private LocalDateTime startOfWeek;
-    private Vibrator v;
     private NotificationUtils notificationUtils;
 
-    private boolean played = false;
+    private MusicUtils musicUtils;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AndroidThreeTen.init(this);
         setContentView(R.layout.activity_main);
         now = LocalDateTime.now();
         events = new ArrayList<>();
-        v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         notificationUtils = new NotificationUtils((NotificationManager)getSystemService(NOTIFICATION_SERVICE), this);
 
         startOfWeek = LocalDateTime.of(now.getYear(), now.getMonth(), now.getDayOfMonth(), 0,0);
         startOfWeek = startOfWeek.minusDays(now.getDayOfWeek().compareTo(DayOfWeek.MONDAY));
 
-
-        final MediaPlayer mPlayer = MediaPlayer.create(this, R.raw.ring);
-        mPlayer.setLooping(true);
+        musicUtils = new MusicUtils(this, R.raw.ring);
 
         final TextView eventName = findViewById(R.id.EventName);
         final TextView eventTime = findViewById(R.id.EventTime);
@@ -61,15 +58,8 @@ public class MainActivity extends AppCompatActivity {
                 v.setBackgroundColor((int)(Math.random()*0xFF000000));
             }
         });
+        final Switch ringSwitch = findViewById(R.id.ringSwitch);
 
-        final Button button = findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mPlayer.pause();
-                button.setVisibility(View.INVISIBLE);
-            }
-        });
 
         ReaderUtils qb = new ReaderUtils(this);
         List<String> allTextLines = qb.readLine("schedule.csv");
@@ -89,7 +79,6 @@ public class MainActivity extends AppCompatActivity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-
                                 long secsBetweenNowAndStart = ChronoUnit.SECONDS.between(startOfWeek, now);
                                 int index = -1;
                                 for(int i = 0;i<events.size();i++) {
@@ -100,15 +89,11 @@ public class MainActivity extends AppCompatActivity {
 
                                 eventName.setText(events.get(index).first);
                                 long s = events.get(index).second-secsBetweenNowAndStart;
-                                if(s <= 0 && !played) {
-                                    v.vibrate(VibrationEffect.createOneShot(5000, VibrationEffect.DEFAULT_AMPLITUDE));
-                                    mPlayer.start();
-                                    played = true;
-                                    button.setVisibility(View.VISIBLE);
-                                } else if(s > 0) played = false;
+                                if(s <= 0 && ringSwitch.isChecked()) {
+                                    musicUtils.play(5000);
+                                }
                                 eventTime.setText(TimeUtils.convertFromSeconds(s,true));
                                 notificationUtils.showNotification(0, events.get(index).first, TimeUtils.convertFromSeconds(s,true));
-
 
                                 StringBuilder next = new StringBuilder();
                                 for(int i=index+1;i<index+11 && i<events.size();i++)
