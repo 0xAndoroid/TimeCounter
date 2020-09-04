@@ -1,11 +1,11 @@
 package xyz.andoroid.timecounter.model;
 
-import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 
 import androidx.core.app.NotificationCompat;
 
@@ -15,13 +15,15 @@ import xyz.andoroid.timecounter.R;
 public class NotificationUtils {
     private Context context;
     private NotificationManager notificationManager;
-    private NotificationChannel channel;
+    private boolean setOngoing = true;
 
     public NotificationUtils(NotificationManager nm, Context context) {
         this.notificationManager = nm;
         this.context = context;
-        channel = new NotificationChannel("0", "Permanent notification", NotificationManager.IMPORTANCE_DEFAULT);
-        notificationManager.createNotificationChannel(channel);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel channel = new NotificationChannel("0", "Permanent notification", NotificationManager.IMPORTANCE_DEFAULT);
+            notificationManager.createNotificationChannel(channel);
+        }
     }
 
     public void showNotification(int id, String title, String content) {
@@ -29,18 +31,21 @@ public class NotificationUtils {
         intent.putExtra("xyz.andoroid.timecounter.notifyId", id);
         PendingIntent pIntent = PendingIntent.getActivity(context, 0, intent,
                 PendingIntent.FLAG_UPDATE_CURRENT);
-        Notification notification = new NotificationCompat.Builder(context, "0")
+        NotificationCompat.Builder notification;
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            notification = new NotificationCompat.Builder(context, "0");
+        } else {
+            notification = new NotificationCompat.Builder(context);
+        }
+        notification
                 .setContentTitle(title)
                 .setContentText(content)
                 .setSmallIcon(R.mipmap.ic_launcher)
-                .setOngoing(true)
-                //.addAction(0, "Action Button", pIntent)
-                .setContentIntent(pIntent)
-                .build();
-        notificationManager.notify(id, notification);
+                .setOngoing(setOngoing)
+                .setContentIntent(pIntent);
+        notificationManager.notify(id, notification.build());
     }
 
     public void onStop() {
-        notificationManager.cancel(0);
     }
 }

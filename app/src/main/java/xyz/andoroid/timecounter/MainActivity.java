@@ -111,4 +111,9 @@ public class MainActivity extends AppCompatActivity {
 
         thread.start();
     }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
 }
