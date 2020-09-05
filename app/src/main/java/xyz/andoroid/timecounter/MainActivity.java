@@ -4,9 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.app.NotificationManager;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Pair;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -31,8 +34,16 @@ public class MainActivity extends AppCompatActivity {
 
     private LocalDateTime startOfWeek;
     private NotificationUtils notificationUtils;
+    private SharedPreferences preferences;
+    private SharedPreferences.Editor preferencesEditor;
 
     private MusicUtils musicUtils;
+
+    private boolean isLongPressed = false;
+    private int deltaOnLongPress = 1000;
+    private boolean animeMode = false;
+
+    private int lastIndex = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +53,8 @@ public class MainActivity extends AppCompatActivity {
         now = LocalDateTime.now();
         events = new ArrayList<>();
         notificationUtils = new NotificationUtils((NotificationManager)getSystemService(NOTIFICATION_SERVICE), this);
+        preferences = getSharedPreferences("Prefs", MODE_PRIVATE);
+        preferencesEditor = preferences.edit();
 
         startOfWeek = LocalDateTime.of(now.getYear(), now.getMonth(), now.getDayOfMonth(), 0,0);
         startOfWeek = startOfWeek.minusDays(now.getDayOfWeek().compareTo(DayOfWeek.MONDAY));
@@ -51,15 +64,39 @@ public class MainActivity extends AppCompatActivity {
         final TextView eventName = findViewById(R.id.EventName);
         final TextView eventTime = findViewById(R.id.EventTime);
         final TextView nextEvent = findViewById(R.id.NextEvent);
-        ConstraintLayout constraintLayout = findViewById(R.id.wdwadwa);
+        final ConstraintLayout constraintLayout = findViewById(R.id.wdwadwa);
         constraintLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 v.setBackgroundColor((int)(Math.random()*0xFF000000));
             }
         });
+        constraintLayout.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                isLongPressed = true;
+                return true;
+            }
+        });
+        constraintLayout.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                v.onTouchEvent(event);
+                if(event.getAction() == MotionEvent.ACTION_UP) {
+                    if(isLongPressed) isLongPressed = false;
+                }
+                return false;
+            }
+        });
         final Switch ringSwitch = findViewById(R.id.ringSwitch);
-
+        ringSwitch.setChecked(preferences.getBoolean("ringSwitch", true));
+        ringSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                preferencesEditor.putBoolean("ringSwitch", isChecked);
+                preferencesEditor.apply();
+            }
+        });
 
         ReaderUtils qb = new ReaderUtils(this);
         List<String> allTextLines = qb.readLine("schedule.csv");
@@ -69,6 +106,33 @@ public class MainActivity extends AppCompatActivity {
             pr = new Pair<>(ss[0], Long.parseLong(ss[1]));
             events.add(pr);
         }
+
+        final Thread bgChangingThread = new Thread() {
+            @Override
+            public void run() {
+                try {
+                    while (!isInterrupted()) {
+                        Thread.sleep(deltaOnLongPress);
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                if(isLongPressed) {
+                                    constraintLayout.setBackgroundColor((int) (Math.random() * 0xFF000000));
+                                    if(deltaOnLongPress > 5)
+                                        deltaOnLongPress/=1.5;
+                                } else {
+                                    deltaOnLongPress = 1000;
+                                }
+                                if(deltaOnLongPress <= 5) {
+                                    animeMode = true;
+                                }
+                            }
+                        });
+                    }
+                } catch (InterruptedException ignored) {}
+            }
+        };
+        bgChangingThread.start();
 
         final Thread thread = new Thread() {
             @Override
@@ -89,7 +153,9 @@ public class MainActivity extends AppCompatActivity {
 
                                 eventName.setText(events.get(index).first);
                                 long s = events.get(index).second-secsBetweenNowAndStart;
-                                if(s <= 0 && ringSwitch.isChecked()) {
+                                if(lastIndex == -1) lastIndex = index;
+                                if(index != lastIndex) {
+                                    lastIndex = index;
                                     musicUtils.play(5000);
                                 }
                                 eventTime.setText(TimeUtils.convertFromSeconds(s,true));

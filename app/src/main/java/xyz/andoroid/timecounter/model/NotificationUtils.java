@@ -21,7 +21,7 @@ public class NotificationUtils {
         this.notificationManager = nm;
         this.context = context;
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationChannel channel = new NotificationChannel("0", "Permanent notification", NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationChannel channel = new NotificationChannel("0", "Permanent notification", NotificationManager.IMPORTANCE_LOW);
             notificationManager.createNotificationChannel(channel);
         }
     }
@@ -42,7 +42,8 @@ public class NotificationUtils {
                 .setContentText(content)
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setOngoing(setOngoing)
-                .setContentIntent(pIntent);
+                .setContentIntent(pIntent)
+                .setOnlyAlertOnce(true);
         notificationManager.notify(id, notification.build());
     }
 

@@ -7,8 +7,8 @@ android {
         applicationId "xyz.andoroid.timecounter"
         minSdkVersion 16
         targetSdkVersion 29
-        versionCode 7
-        versionName "1.4.2"
+        versionCode 9
+        versionName "1.5"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
