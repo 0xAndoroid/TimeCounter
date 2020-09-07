@@ -6,8 +6,6 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import android.app.NotificationManager;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Pair;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.Switch;
@@ -22,15 +20,12 @@ import org.threeten.bp.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
-import xyz.andoroid.timecounter.model.MusicUtils;
-import xyz.andoroid.timecounter.model.NotificationUtils;
-import xyz.andoroid.timecounter.model.ReaderUtils;
-import xyz.andoroid.timecounter.model.TimeUtils;
+import xyz.andoroid.timecounter.model.*;
 
 public class MainActivity extends AppCompatActivity {
     private LocalDateTime now;
 
-    private List<Pair<String, Long>> events;
+    private List<Triplet> events;
 
     private LocalDateTime startOfWeek;
     private NotificationUtils notificationUtils;
@@ -44,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
     private boolean animeMode = false;
 
     private int lastIndex = -1;
+
+    private boolean dormitorySwitchJustChanged = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,21 +68,14 @@ public class MainActivity extends AppCompatActivity {
                 v.setBackgroundColor((int)(Math.random()*0xFF000000));
             }
         });
-        constraintLayout.setOnLongClickListener(new View.OnLongClickListener() {
+        final Switch dormitorySwitch = findViewById(R.id.dormitorySwitch);
+        dormitorySwitch.setChecked(preferences.getBoolean("dormitorySwitch", false));
+        dormitorySwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public boolean onLongClick(View v) {
-                isLongPressed = true;
-                return true;
-            }
-        });
-        constraintLayout.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                v.onTouchEvent(event);
-                if(event.getAction() == MotionEvent.ACTION_UP) {
-                    if(isLongPressed) isLongPressed = false;
-                }
-                return false;
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                preferencesEditor.putBoolean("dormitorySwitch", isChecked);
+                preferencesEditor.apply();
+                dormitorySwitchJustChanged = true;
             }
         });
         final Switch ringSwitch = findViewById(R.id.ringSwitch);
@@ -100,39 +90,13 @@ public class MainActivity extends AppCompatActivity {
 
         ReaderUtils qb = new ReaderUtils(this);
         List<String> allTextLines = qb.readLine("schedule.csv");
-        String[] ss;Pair<String, Long> pr;
+        String[] ss;
+        Triplet pr;
         for(String s : allTextLines) {
             ss = s.split(",");
-            pr = new Pair<>(ss[0], Long.parseLong(ss[1]));
+            pr = new Triplet(ss[0], Long.parseLong(ss[1]), Integer.parseInt(ss[2]));
             events.add(pr);
         }
-
-        final Thread bgChangingThread = new Thread() {
-            @Override
-            public void run() {
-                try {
-                    while (!isInterrupted()) {
-                        Thread.sleep(deltaOnLongPress);
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                if(isLongPressed) {
-                                    constraintLayout.setBackgroundColor((int) (Math.random() * 0xFF000000));
-                                    if(deltaOnLongPress > 5)
-                                        deltaOnLongPress/=1.5;
-                                } else {
-                                    deltaOnLongPress = 1000;
-                                }
-                                if(deltaOnLongPress <= 5) {
-                                    animeMode = true;
-                                }
-                            }
-                        });
-                    }
-                } catch (InterruptedException ignored) {}
-            }
-        };
-        bgChangingThread.start();
 
         final Thread thread = new Thread() {
             @Override
@@ -146,17 +110,18 @@ public class MainActivity extends AppCompatActivity {
                                 long secsBetweenNowAndStart = ChronoUnit.SECONDS.between(startOfWeek, now);
                                 int index = -1;
                                 for(int i = 0;i<events.size();i++) {
+                                    if(!preferences.getBoolean("dormitorySwitch", false) && events.get(i).third == 0  ) continue;
                                     if(secsBetweenNowAndStart > events.get(i).second) continue;
                                     index = i;
                                     break;
                                 }
-
                                 eventName.setText(events.get(index).first);
                                 long s = events.get(index).second-secsBetweenNowAndStart;
                                 if(lastIndex == -1) lastIndex = index;
-                                if(index != lastIndex) {
+                                if(index != lastIndex && preferences.getBoolean("ringSwitch",true)) {
+                                    if(dormitorySwitchJustChanged) dormitorySwitchJustChanged = false;
+                                    else musicUtils.play(5000);
                                     lastIndex = index;
-                                    musicUtils.play(5000);
                                 }
                                 eventTime.setText(TimeUtils.convertFromSeconds(s,true));
                                 notificationUtils.showNotification(0, events.get(index).first, TimeUtils.convertFromSeconds(s,true));

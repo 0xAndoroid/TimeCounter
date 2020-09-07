@@ -20,7 +20,6 @@ public class MusicUtils {
                 try {
                     Thread.sleep(duration);
                 }catch ( InterruptedException ignored) {}
-                System.out.println("stop");
                 player.stop();
                 try {
                     player.prepare();
