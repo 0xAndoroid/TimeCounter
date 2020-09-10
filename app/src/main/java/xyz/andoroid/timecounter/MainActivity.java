@@ -1,13 +1,13 @@
 package xyz.andoroid.timecounter;
 
+import android.annotation.SuppressLint;
+import android.view.MotionEvent;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.app.NotificationManager;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -36,12 +36,12 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean isLongPressed = false;
     private int deltaOnLongPress = 1000;
-    private boolean animeMode = false;
 
     private int lastIndex = -1;
 
     private boolean dormitorySwitchJustChanged = false;
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,30 +62,51 @@ public class MainActivity extends AppCompatActivity {
         final TextView eventTime = findViewById(R.id.EventTime);
         final TextView nextEvent = findViewById(R.id.NextEvent);
         final ConstraintLayout constraintLayout = findViewById(R.id.wdwadwa);
-        constraintLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                v.setBackgroundColor((int)(Math.random()*0xFF000000));
-            }
+        constraintLayout.setOnClickListener(v -> v.setBackgroundColor((int)(Math.random()*0xFF000000)));
+        constraintLayout.setOnLongClickListener(v -> {
+            isLongPressed = true;
+            return true;
         });
+        constraintLayout.setOnTouchListener((v,event) -> {
+                v.onTouchEvent(event);
+                if(event.getAction() == MotionEvent.ACTION_UP) {
+                    if(isLongPressed) isLongPressed = false;
+                }
+                return false;
+        });
+
+        final Thread bgChangingThread = new Thread() {
+            @Override
+            public void run() {
+                try {
+                    while (!isInterrupted()) {
+                        Thread.sleep(deltaOnLongPress);
+                        runOnUiThread(() -> {
+                            if(isLongPressed) {
+                                constraintLayout.setBackgroundColor((int) (Math.random() * 0xFF000000));
+                                if(deltaOnLongPress > 10)
+                                    deltaOnLongPress/=1.3;
+                            } else {
+                                deltaOnLongPress = 1000;
+                            }
+                        });
+                    }
+                } catch (InterruptedException ignored) {}
+            }
+        };
+        bgChangingThread.start();
         final Switch dormitorySwitch = findViewById(R.id.dormitorySwitch);
         dormitorySwitch.setChecked(preferences.getBoolean("dormitorySwitch", false));
-        dormitorySwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                preferencesEditor.putBoolean("dormitorySwitch", isChecked);
-                preferencesEditor.apply();
-                dormitorySwitchJustChanged = true;
-            }
+        dormitorySwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            preferencesEditor.putBoolean("dormitorySwitch", isChecked);
+            preferencesEditor.apply();
+            dormitorySwitchJustChanged = true;
         });
         final Switch ringSwitch = findViewById(R.id.ringSwitch);
         ringSwitch.setChecked(preferences.getBoolean("ringSwitch", true));
-        ringSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                preferencesEditor.putBoolean("ringSwitch", isChecked);
-                preferencesEditor.apply();
-            }
+        ringSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            preferencesEditor.putBoolean("ringSwitch", isChecked);
+            preferencesEditor.apply();
         });
 
         ReaderUtils qb = new ReaderUtils(this);
@@ -104,36 +125,36 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     while (!isInterrupted()) {
                         Thread.sleep(1000);
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                long secsBetweenNowAndStart = ChronoUnit.SECONDS.between(startOfWeek, now);
-                                int index = -1;
-                                for(int i = 0;i<events.size();i++) {
-                                    if(!preferences.getBoolean("dormitorySwitch", false) && events.get(i).third == 0  ) continue;
-                                    if(secsBetweenNowAndStart > events.get(i).second) continue;
-                                    index = i;
-                                    break;
-                                }
-                                eventName.setText(events.get(index).first);
-                                long s = events.get(index).second-secsBetweenNowAndStart;
-                                if(lastIndex == -1) lastIndex = index;
-                                if(index != lastIndex && preferences.getBoolean("ringSwitch",true)) {
-                                    if(dormitorySwitchJustChanged) dormitorySwitchJustChanged = false;
-                                    else musicUtils.play(5000);
-                                    lastIndex = index;
-                                }
-                                eventTime.setText(TimeUtils.convertFromSeconds(s,true));
-                                notificationUtils.showNotification(0, events.get(index).first, TimeUtils.convertFromSeconds(s,true));
-
-                                StringBuilder next = new StringBuilder();
-                                for(int i=index+1;i<index+11 && i<events.size();i++)
-                                    next.append(events.get(i).first).append(" ").append(TimeUtils.convertFromSeconds(events.get(i).second-secsBetweenNowAndStart,false)).append("\n");
-
-                                nextEvent.setText(next);
-
-                                now = LocalDateTime.now();
+                        runOnUiThread(() -> {
+                            long secsBetweenNowAndStart = ChronoUnit.SECONDS.between(startOfWeek, now);
+                            int index = -1;
+                            for(int i = 0;i<events.size();i++) {
+                                if(!preferences.getBoolean("dormitorySwitch", false) && events.get(i).third == 0  ) continue;
+                                if(secsBetweenNowAndStart > events.get(i).second) continue;
+                                index = i;
+                                break;
                             }
+                            eventName.setText(events.get(index).first);
+                            long s = events.get(index).second-secsBetweenNowAndStart;
+                            if(lastIndex == -1) lastIndex = index;
+                            if(index != lastIndex && preferences.getBoolean("ringSwitch",true)) {
+                                if(dormitorySwitchJustChanged) dormitorySwitchJustChanged = false;
+                                else musicUtils.play(5000);
+                                lastIndex = index;
+                            }
+                            eventTime.setText(TimeUtils.convertFromSeconds(s,true));
+                            notificationUtils.showNotification(0, events.get(index).first, TimeUtils.convertFromSeconds(s,true));
+
+                            StringBuilder next = new StringBuilder();
+                            int t = 11;
+                            for(int i=index+1;i<index+t && i<events.size();i++) {
+                                if(!preferences.getBoolean("dormitorySwitch", false) && events.get(i).third == 0) {t++;continue;}
+                                next.append(events.get(i).first).append(" ").append(TimeUtils.convertFromSeconds(events.get(i).second - secsBetweenNowAndStart, false)).append("\n");
+                            }
+
+                            nextEvent.setText(next);
+
+                            now = LocalDateTime.now();
                         });
                     }
                 } catch (InterruptedException ignored) {}

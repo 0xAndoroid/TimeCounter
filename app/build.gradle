@@ -7,8 +7,8 @@ android {
         applicationId "xyz.andoroid.timecounter"
         minSdkVersion 16
         targetSdkVersion 29
-        versionCode 11
-        versionName "1.6.0"
+        versionCode 12
+        versionName "1.7.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -16,6 +16,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
     }
 }
 
