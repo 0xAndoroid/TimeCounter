@@ -1,0 +1,39 @@
+<PreferenceScreen
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <ListPreference
+            app:key="class"
+            app:title="@string/select_class"
+            app:entries="@array/class_entries"
+            app:entryValues="@array/class_values"
+            app:defaultValue="a11_2020"
+            app:useSimpleSummaryProvider="true"/>
+
+    <SwitchPreferenceCompat
+            app:key="ring"
+            app:title="@string/ring"
+            app:defaultValue="false"/>
+
+    <SwitchPreferenceCompat
+            app:key="showDormitory"
+            app:title="@string/dormitory"
+            app:defaultValue="false"/>
+
+    <ListPreference
+            app:key="font"
+            app:title="@string/font"
+            app:entries="@array/font_entries"
+            app:entryValues="@array/font_values"
+            app:defaultValue="tnm"
+            app:useSimpleSummaryProvider="true"/>
+
+    <SwitchPreferenceCompat
+            app:key="epilepticBG"
+            app:title="@string/epilepticBG"
+            app:summary="@string/epilepticBG_summary"
+            app:defaultValue="false"/>
+
+
+
+</PreferenceScreen>

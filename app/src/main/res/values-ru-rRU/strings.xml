@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">УФМЛ Time Counter</string>
+    <string name="dormitory">Показовать события для общежития</string>
+    <string name="loading">Загрузка</string>
+    <string name="ring">Звонок</string>
+    <string name="font">Щрифт</string>
+    <string name="select_class">Выберите класс</string>
+    <string name="title_activity_settings">Настройки</string>
+    <string name="no_further_events">Конец недели</string>
+    <string name="epilepticBG">Епилептический фон</string>
+    <string name="epilepticBG_summary">Может жрать батарею</string>
+</resources>
