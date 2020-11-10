@@ -17,4 +17,5 @@
     <string name="developer_name">Tretyakov Andriy</string>
     <string name="release_name">Release name</string>
     <string name="about">About</string>
+    <string name="enable_notification">Enable notifications</string>
 </resources>

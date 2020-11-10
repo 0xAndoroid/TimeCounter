@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
     private boolean dormitorySwitchJustChanged = false;
 
     private String font;
+    private boolean enableNotification;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -65,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         startOfWeek = LocalDateTime.of(now.getYear(), now.getMonth(), now.getDayOfMonth(), 0,0);
         startOfWeek = startOfWeek.minusDays(now.getDayOfWeek().compareTo(DayOfWeek.MONDAY));
 
-
+        enableNotification = preferences.getBoolean("notify",true);
 
         musicUtils = new MusicUtils(this, R.raw.ring);
 
@@ -82,47 +83,20 @@ public class MainActivity extends AppCompatActivity {
             return true;
         });
         constraintLayout.setOnTouchListener((v,event) -> {
-                v.onTouchEvent(event);
-                if(event.getAction() == MotionEvent.ACTION_UP) {
-                    if(isLongPressed) isLongPressed = false;
-                }
-                return false;
+            v.onTouchEvent(event);
+            if(event.getAction() == MotionEvent.ACTION_UP) if(isLongPressed) isLongPressed = false;
+            return false;
         });
+        epilepticBG(constraintLayout);
 
         font = preferences.getString("font","tnm");
         updateFont(eventName, eventTime, nextEvent);
 
-        if(preferences.getBoolean("epilepticBG", false)) {
-            final Thread bgChangingThread = new Thread() {
-                @Override
-                public void run() {
-                    try {
-                        while (!isInterrupted()) {
-                            Thread.sleep(deltaOnLongPress);
-                            runOnUiThread(() -> {
-                                if (isLongPressed) {
-                                    constraintLayout.setBackgroundColor((int) (Math.random() * 0xFF000000));
-                                    if (deltaOnLongPress > 10)
-                                        deltaOnLongPress /= 1.3;
-                                } else {
-                                    deltaOnLongPress = 1000;
-                                }
-                            });
-                        }
-                    } catch (InterruptedException ignored) {
-                    }
-                }
-            };
-            bgChangingThread.start();
-        }
-
-        ReaderUtils qb = new ReaderUtils(this);
-        List<String> allTextLines = qb.readLine(preferences.getString("class","a11_2020")+".csv");
-        String[] ss;
-        Triplet pr;
+        ReaderUtils readerUtils = new ReaderUtils(this);
+        List<String> allTextLines = readerUtils.readLine(preferences.getString("class","a11_2020")+".csv");
         for(String s : allTextLines) {
-            ss = s.split(",");
-            pr = new Triplet(ss[0], Long.parseLong(ss[1]), Integer.parseInt(ss[2]));
+            String[] ss = s.split(",");
+            Triplet pr = new Triplet(ss[0], Long.parseLong(ss[1]), Integer.parseInt(ss[2]));
             events.add(pr);
         }
 
@@ -136,6 +110,10 @@ public class MainActivity extends AppCompatActivity {
                             if(!font.equalsIgnoreCase(preferences.getString("font","tnm"))) {
                                 font = preferences.getString("font","tnm");
                                 updateFont(eventName, eventTime, nextEvent);
+                            }
+                            if(enableNotification != preferences.getBoolean("notify",true)) {
+                                enableNotification = !enableNotification;
+                                if(!enableNotification) notificationUtils.cancelNotification(0);
                             }
                             if(weekEnded) {
                                 startOfWeek = LocalDateTime.of(now.getYear(), now.getMonth(), now.getDayOfMonth(), 0,0);
@@ -160,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
                                     else musicUtils.play(5000);
                                     lastIndex = index;
                                 }
-                                notificationUtils.showNotification(0, events.get(index).first, TimeUtils.convertFromSeconds(s,true));
+                                if(enableNotification) notificationUtils.showNotification(0, events.get(index).first, TimeUtils.convertFromSeconds(s,true));
 
                                 StringBuilder next = new StringBuilder();
                                 int t = preferences.getInt("showUpcomingEvents",10)+1;
@@ -170,35 +148,25 @@ public class MainActivity extends AppCompatActivity {
                                 }
 
                                 nextEvent.setText(next);
-                            }
-                            else {
+                            } else {
                                 eventName.setText(R.string.no_further_events);
                                 nextEvent.setText("");
                                 long s = 7*24*60*60-secsBetweenNowAndStart;
                                 eventTime.setText(TimeUtils.convertFromSeconds(s,true));
+                                if(enableNotification) notificationUtils.showNotification(0, R.string.no_further_events+"", TimeUtils.convertFromSeconds(s,true));
                                 weekEnded = true;
                             }
-
-
                             now = LocalDateTime.now();
                         });
                     }
                 } catch (InterruptedException ignored) {}
             }
         };
-
         thread.start();
     }
 
     private void updateFont(TextView eventName, TextView eventTime, TextView nextEvent) {
-        if(font.equalsIgnoreCase("tnm")) {
-            eventName.setTypeface(ResourcesCompat.getFont(this, R.font.times));
-            eventTime.setTypeface(ResourcesCompat.getFont(this, R.font.times));
-            nextEvent.setTypeface(ResourcesCompat.getFont(this, R.font.times));
-            eventName.setTextSize(TypedValue.COMPLEX_UNIT_SP,(int)(24*1.35f));
-            eventTime.setTextSize(TypedValue.COMPLEX_UNIT_SP,(int)(50*1.35f));
-            nextEvent.setTextSize(TypedValue.COMPLEX_UNIT_SP,(int)(18*1.35f));
-        } else if(font.equalsIgnoreCase("anime_ace")) {
+        if(font.equalsIgnoreCase("anime_ace")) {
             eventName.setTypeface(ResourcesCompat.getFont(this, R.font.anime_ace));
             eventTime.setTypeface(ResourcesCompat.getFont(this, R.font.anime_ace));
             nextEvent.setTypeface(ResourcesCompat.getFont(this, R.font.anime_ace));
@@ -212,6 +180,39 @@ public class MainActivity extends AppCompatActivity {
             eventName.setTextSize(TypedValue.COMPLEX_UNIT_SP,(int)(24*1.35f));
             eventTime.setTextSize(TypedValue.COMPLEX_UNIT_SP,(int)(50*1.35f));
             nextEvent.setTextSize(TypedValue.COMPLEX_UNIT_SP,(int)(18*1.35f));
+        } else {
+            eventName.setTypeface(ResourcesCompat.getFont(this, R.font.times));
+            eventTime.setTypeface(ResourcesCompat.getFont(this, R.font.times));
+            nextEvent.setTypeface(ResourcesCompat.getFont(this, R.font.times));
+            eventName.setTextSize(TypedValue.COMPLEX_UNIT_SP,(int)(24*1.35f));
+            eventTime.setTextSize(TypedValue.COMPLEX_UNIT_SP,(int)(50*1.35f));
+            nextEvent.setTextSize(TypedValue.COMPLEX_UNIT_SP,(int)(18*1.35f));
+        }
+    }
+
+    private void epilepticBG(ConstraintLayout constraintLayout) {
+        if(preferences.getBoolean("epilepticBG", false)) {
+            final Thread bgChangingThread = new Thread() {
+                @Override
+                public void run() {
+                    try {
+                        while (!isInterrupted()) {
+                            Thread.sleep(deltaOnLongPress);
+                            runOnUiThread(() -> {
+                                if (isLongPressed) {
+                                    constraintLayout.setBackgroundColor((int) (Math.random() * 0xFF000000));
+                                    if (deltaOnLongPress > 10)
+                                        deltaOnLongPress /= 1.3;
+                                } else {
+                                    deltaOnLongPress = 1000;
+                                }
+                            });
+                        }
+                    } catch (InterruptedException ignored) {
+                    }
+                }
+            };
+            bgChangingThread.start();
         }
     }
 

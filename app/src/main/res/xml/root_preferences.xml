@@ -1,6 +1,5 @@
 <PreferenceScreen
-        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:asp="http://schemas.android.com/tools">
+        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:android="http://schemas.android.com/apk/res/android">
 
     <PreferenceCategory
         app:title="@string/title_activity_settings">
@@ -21,6 +20,11 @@
                 android:max="15"
                 app:showSeekBarValue="true"
                 android:title="@string/settings_title" />
+
+        <SwitchPreferenceCompat
+                app:key="notify"
+                app:title="@string/enable_notification"
+                app:defaultValue="true"/>
 
         <SwitchPreferenceCompat
                 app:key="ring"
@@ -61,14 +65,14 @@
                 android:selectable="false"
                 android:persistent="false"
                 android:title="@string/release_name"
-                android:summary="v2.1.0"/>
+                android:summary="v2.1.1"/>
 
         <Preference
                 android:key="version"
                 android:selectable="false"
                 android:persistent="false"
                 android:title="@string/version"
-                android:summary="16"/>
+                android:summary="17"/>
     </PreferenceCategory>
 
 

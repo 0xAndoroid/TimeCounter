@@ -12,6 +12,8 @@ import androidx.core.app.NotificationCompat;
 import xyz.andoroid.timecounter.MainActivity;
 import xyz.andoroid.timecounter.R;
 
+import java.util.Map;
+
 public class NotificationUtils {
     private Context context;
     private NotificationManager notificationManager;
@@ -45,6 +47,10 @@ public class NotificationUtils {
                 .setContentIntent(pIntent)
                 .setOnlyAlertOnce(true);
         notificationManager.notify(id, notification.build());
+    }
+
+    public void cancelNotification(int id) {
+        notificationManager.cancel(id);
     }
 
     public void onStop() {
