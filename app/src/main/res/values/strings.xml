@@ -9,4 +9,12 @@
     <string name="no_further_events">End of the week</string>
     <string name="epilepticBG">Epileptic background</string>
     <string name="epilepticBG_summary">May drain battery</string>
+
+    <string name="settings_dialog_message">Choose a value</string>
+    <string name="settings_title">Amount of upcoming events</string>
+    <string name="version">Version</string>
+    <string name="developer">Developer</string>
+    <string name="developer_name">Tretyakov Andriy</string>
+    <string name="release_name">Release name</string>
+    <string name="about">About</string>
 </resources>

@@ -2,6 +2,8 @@ package xyz.andoroid.timecounter;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Typeface;
+import android.util.TypedValue;
 import android.view.*;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -46,10 +48,13 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean dormitorySwitchJustChanged = false;
 
+    private String font;
+
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         AndroidThreeTen.init(this);
         setContentView(R.layout.activity_main);
         now = LocalDateTime.now();
@@ -84,16 +89,9 @@ public class MainActivity extends AppCompatActivity {
                 return false;
         });
 
-        String fontFromPrefs = preferences.getString("font","tnm");
-        if(fontFromPrefs.equalsIgnoreCase("tnm")) {
-            eventName.setTypeface(ResourcesCompat.getFont(this, R.font.times));
-            eventTime.setTypeface(ResourcesCompat.getFont(this, R.font.times));
-            nextEvent.setTypeface(ResourcesCompat.getFont(this, R.font.times));
-        } else if(fontFromPrefs.equalsIgnoreCase("anime_ace")) {
-            eventName.setTypeface(ResourcesCompat.getFont(this, R.font.anime_ace));
-            eventTime.setTypeface(ResourcesCompat.getFont(this, R.font.anime_ace));
-            nextEvent.setTypeface(ResourcesCompat.getFont(this, R.font.anime_ace));
-        }
+        font = preferences.getString("font","tnm");
+        updateFont(eventName, eventTime, nextEvent);
+
         if(preferences.getBoolean("epilepticBG", false)) {
             final Thread bgChangingThread = new Thread() {
                 @Override
@@ -135,6 +133,10 @@ public class MainActivity extends AppCompatActivity {
                     while (!isInterrupted()) {
                         Thread.sleep(1000);
                         runOnUiThread(() -> {
+                            if(!font.equalsIgnoreCase(preferences.getString("font","tnm"))) {
+                                font = preferences.getString("font","tnm");
+                                updateFont(eventName, eventTime, nextEvent);
+                            }
                             if(weekEnded) {
                                 startOfWeek = LocalDateTime.of(now.getYear(), now.getMonth(), now.getDayOfMonth(), 0,0);
                                 startOfWeek = startOfWeek.minusDays(now.getDayOfWeek().compareTo(DayOfWeek.MONDAY));
@@ -161,7 +163,7 @@ public class MainActivity extends AppCompatActivity {
                                 notificationUtils.showNotification(0, events.get(index).first, TimeUtils.convertFromSeconds(s,true));
 
                                 StringBuilder next = new StringBuilder();
-                                int t = 11;
+                                int t = preferences.getInt("showUpcomingEvents",10)+1;
                                 for(int i=index+1;i<index+t && i<events.size();i++) {
                                     if(!preferences.getBoolean("showDormitory", false) && events.get(i).third == 0) {t++;continue;}
                                     next.append(events.get(i).first).append(" ").append(TimeUtils.convertFromSeconds(events.get(i).second - secsBetweenNowAndStart, false)).append("\n");
@@ -186,6 +188,31 @@ public class MainActivity extends AppCompatActivity {
         };
 
         thread.start();
+    }
+
+    private void updateFont(TextView eventName, TextView eventTime, TextView nextEvent) {
+        if(font.equalsIgnoreCase("tnm")) {
+            eventName.setTypeface(ResourcesCompat.getFont(this, R.font.times));
+            eventTime.setTypeface(ResourcesCompat.getFont(this, R.font.times));
+            nextEvent.setTypeface(ResourcesCompat.getFont(this, R.font.times));
+            eventName.setTextSize(TypedValue.COMPLEX_UNIT_SP,(int)(24*1.35f));
+            eventTime.setTextSize(TypedValue.COMPLEX_UNIT_SP,(int)(50*1.35f));
+            nextEvent.setTextSize(TypedValue.COMPLEX_UNIT_SP,(int)(18*1.35f));
+        } else if(font.equalsIgnoreCase("anime_ace")) {
+            eventName.setTypeface(ResourcesCompat.getFont(this, R.font.anime_ace));
+            eventTime.setTypeface(ResourcesCompat.getFont(this, R.font.anime_ace));
+            nextEvent.setTypeface(ResourcesCompat.getFont(this, R.font.anime_ace));
+            eventName.setTextSize(TypedValue.COMPLEX_UNIT_SP,24);
+            eventTime.setTextSize(TypedValue.COMPLEX_UNIT_SP,50);
+            nextEvent.setTextSize(TypedValue.COMPLEX_UNIT_SP,18);
+        } else if(font.equalsIgnoreCase("serif")) {
+            eventName.setTypeface(Typeface.SANS_SERIF);
+            eventTime.setTypeface(Typeface.SANS_SERIF);
+            nextEvent.setTypeface(Typeface.SANS_SERIF);
+            eventName.setTextSize(TypedValue.COMPLEX_UNIT_SP,(int)(24*1.35f));
+            eventTime.setTextSize(TypedValue.COMPLEX_UNIT_SP,(int)(50*1.35f));
+            nextEvent.setTextSize(TypedValue.COMPLEX_UNIT_SP,(int)(18*1.35f));
+        }
     }
 
     @Override

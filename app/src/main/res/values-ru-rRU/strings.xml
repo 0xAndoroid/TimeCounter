@@ -10,4 +10,11 @@
     <string name="no_further_events">Конец недели</string>
     <string name="epilepticBG">Епилептический фон</string>
     <string name="epilepticBG_summary">Может жрать батарею</string>
+    <string name="settings_title">Количество будущих событий</string>
+    <string name="settings_dialog_message">Выберите значение</string>
+    <string name="about">О программе</string>
+    <string name="developer">Разработчик</string>
+    <string name="release_name">Релиз</string>
+    <string name="version">Версия</string>
+    <string name="developer_name">Третьяков Андрей</string>
 </resources>

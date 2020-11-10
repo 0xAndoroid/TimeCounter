@@ -1,39 +1,75 @@
 <PreferenceScreen
-        xmlns:app="http://schemas.android.com/apk/res-auto">
+        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:asp="http://schemas.android.com/tools">
+
+    <PreferenceCategory
+        app:title="@string/title_activity_settings">
 
 
-    <ListPreference
-            app:key="class"
-            app:title="@string/select_class"
-            app:entries="@array/class_entries"
-            app:entryValues="@array/class_values"
-            app:defaultValue="a11_2020"
-            app:useSimpleSummaryProvider="true"/>
+        <ListPreference
+                app:key="class"
+                app:title="@string/select_class"
+                app:entries="@array/class_entries"
+                app:entryValues="@array/class_values"
+                app:defaultValue="a11_2020"
+                app:useSimpleSummaryProvider="true"/>
 
-    <SwitchPreferenceCompat
-            app:key="ring"
-            app:title="@string/ring"
-            app:defaultValue="false"/>
+        <SeekBarPreference
+                android:defaultValue="10"
+                android:dialogMessage="@string/settings_dialog_message"
+                android:key="showUpcomingEvents"
+                android:max="15"
+                app:showSeekBarValue="true"
+                android:title="@string/settings_title" />
 
-    <SwitchPreferenceCompat
-            app:key="showDormitory"
-            app:title="@string/dormitory"
-            app:defaultValue="false"/>
+        <SwitchPreferenceCompat
+                app:key="ring"
+                app:title="@string/ring"
+                app:defaultValue="false"/>
 
-    <ListPreference
-            app:key="font"
-            app:title="@string/font"
-            app:entries="@array/font_entries"
-            app:entryValues="@array/font_values"
-            app:defaultValue="tnm"
-            app:useSimpleSummaryProvider="true"/>
+        <SwitchPreferenceCompat
+                app:key="showDormitory"
+                app:title="@string/dormitory"
+                app:defaultValue="false"/>
 
-    <SwitchPreferenceCompat
-            app:key="epilepticBG"
-            app:title="@string/epilepticBG"
-            app:summary="@string/epilepticBG_summary"
-            app:defaultValue="false"/>
+        <ListPreference
+                app:key="font"
+                app:title="@string/font"
+                app:entries="@array/font_entries"
+                app:entryValues="@array/font_values"
+                app:defaultValue="tnm"
+                app:useSimpleSummaryProvider="true"/>
 
+        <SwitchPreferenceCompat
+                app:key="epilepticBG"
+                app:title="@string/epilepticBG"
+                app:summary="@string/epilepticBG_summary"
+                app:defaultValue="false"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:title="@string/about">
+        <Preference
+                android:key="developer_set"
+                android:selectable="false"
+                android:persistent="false"
+                android:title="@string/developer"
+                android:summary="@string/developer_name"/>
+
+        <Preference
+                android:key="release_name"
+                android:selectable="false"
+                android:persistent="false"
+                android:title="@string/release_name"
+                android:summary="v2.1.0"/>
+
+        <Preference
+                android:key="version"
+                android:selectable="false"
+                android:persistent="false"
+                android:title="@string/version"
+                android:summary="16"/>
+    </PreferenceCategory>
 
 
 </PreferenceScreen>

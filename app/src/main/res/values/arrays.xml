@@ -3,11 +3,13 @@
     <string-array name="font_entries">
         <item>Times New Roman</item>
         <item>Anime Ace</item>
+        <item>Sans Serif</item>
     </string-array>
 
     <string-array name="font_values">
         <item>tnm</item>
         <item>anime_ace</item>
+        <item>serif</item>
     </string-array>
 
     <string-array name="class_entries">

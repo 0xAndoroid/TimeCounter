@@ -10,4 +10,11 @@
     <string name="no_further_events">Кінець тижня</string>
     <string name="epilepticBG">Епілептичний фон</string>
     <string name="epilepticBG_summary">Може розряджати батарею</string>
+    <string name="settings_title">Кількість майбутніх подій</string>
+    <string name="settings_dialog_message">Виберіть значення</string>
+    <string name="about">Про програму</string>
+    <string name="developer">Розробник</string>
+    <string name="release_name">Реліз</string>
+    <string name="version">Версія</string>
+    <string name="developer_name">Третьяков Андрій</string>
 </resources>
