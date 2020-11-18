@@ -77,14 +77,14 @@
                 android:selectable="false"
                 android:persistent="false"
                 android:title="@string/release_name"
-                android:summary="v2.2.1"/>
+                android:summary="v2.2.3"/>
 
         <Preference
                 android:key="version"
                 android:selectable="false"
                 android:persistent="false"
                 android:title="@string/version"
-                android:summary="19"/>
+                android:summary="21"/>
     </PreferenceCategory>
 
 

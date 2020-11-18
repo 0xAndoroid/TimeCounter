@@ -173,6 +173,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateClassCode() {
+        events.clear();
         classCode = preferences.getString("class","a11_2020");
 
         UpdateUtils updateUtils = new UpdateUtils(getSharedPreferences("classVersions", MODE_PRIVATE));
