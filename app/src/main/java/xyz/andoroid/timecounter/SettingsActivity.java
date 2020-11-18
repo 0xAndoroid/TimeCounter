@@ -1,14 +1,14 @@
 package xyz.andoroid.timecounter;
 
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
+import android.util.Pair;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.preference.Preference;
+import androidx.preference.ListPreference;
 import androidx.preference.PreferenceFragmentCompat;
+import xyz.andoroid.timecounter.model.UpdateUtils;
+
+import java.util.List;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -24,14 +24,32 @@ public class SettingsActivity extends AppCompatActivity {
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
-
-
     }
 
     public static class SettingsFragment extends PreferenceFragmentCompat {
         @Override
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
             setPreferencesFromResource(R.xml.root_preferences, rootKey);
+            ListPreference preference = findPreference("class");
+            if(UpdateUtils.isInternetAvailable()) {
+                Pair<List<String>, List<String>> get =  UpdateUtils.getAllClasses();
+                if(get==null) return;
+                String[] entries = new String[get.first.size()];
+                String[] values = new String[get.first.size()];
+                for(int i=0;i<get.first.size();i++) {
+                    values[i] = get.first.get(i);
+                    entries[i] = get.second.get(i);
+                }
+                try {
+                    assert preference != null;
+                    preference.setEntryValues(values);
+                    preference.setEntries(entries);
+                } catch (NullPointerException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
         }
     }
 }

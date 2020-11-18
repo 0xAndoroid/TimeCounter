@@ -18,4 +18,8 @@
     <string name="version">Версія</string>
     <string name="developer_name">Третьяков Андрій</string>
     <string name="enable_notification">Включити сповіщення</string>
+    <string name="internet_needed">Підключіться до інтернету\\nЯкщо ви підключені, перезапустіть програму.</string>
+    <string name="hours_for_notifying">Сповіщувати за Х хв.</string>
+    <string name="version_of_file">Версія розкладу</string>
+    <string name="show_breaks">Показувати перерви</string>
 </resources>

@@ -9,7 +9,6 @@
     <string name="no_further_events">End of the week</string>
     <string name="epilepticBG">Epileptic background</string>
     <string name="epilepticBG_summary">May drain battery</string>
-
     <string name="settings_dialog_message">Choose a value</string>
     <string name="settings_title">Amount of upcoming events</string>
     <string name="version">Version</string>
@@ -18,4 +17,8 @@
     <string name="release_name">Release name</string>
     <string name="about">About</string>
     <string name="enable_notification">Enable notifications</string>
+    <string name="internet_needed">Connect to internet\nIf you are connected, restart the app</string>
+    <string name="hours_for_notifying">Notify within only X mins</string>
+    <string name="version_of_file">Version of class schedule</string>
+    <string name="show_breaks">Show breaks</string>
 </resources>

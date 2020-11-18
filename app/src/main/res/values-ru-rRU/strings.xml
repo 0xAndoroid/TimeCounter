@@ -18,4 +18,8 @@
     <string name="version">Версия</string>
     <string name="developer_name">Третьяков Андрей</string>
     <string name="enable_notification">Включить оповещение</string>
+    <string name="internet_needed">Подключитесь к интернету\\nЕсли вы подключены, перезапустите приложение</string>
+    <string name="hours_for_notifying">Оповещать только за Х мин.</string>
+    <string name="version_of_file">Версия расписания</string>
+    <string name="show_breaks">Показывать перемены</string>
 </resources>

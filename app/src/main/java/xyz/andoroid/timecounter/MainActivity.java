@@ -23,6 +23,7 @@ import org.threeten.bp.DayOfWeek;
 import org.threeten.bp.LocalDateTime;
 import org.threeten.bp.temporal.ChronoUnit;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,6 +49,9 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean dormitorySwitchJustChanged = false;
 
+    private String classCode;
+    private boolean showThatNoInternetConnection = false;
+
     private String font;
     private boolean enableNotification;
 
@@ -62,6 +66,8 @@ public class MainActivity extends AppCompatActivity {
         events = new ArrayList<>();
         notificationUtils = new NotificationUtils((NotificationManager)getSystemService(NOTIFICATION_SERVICE), this);
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
+
+        updateClassCode();
 
         startOfWeek = LocalDateTime.of(now.getYear(), now.getMonth(), now.getDayOfMonth(), 0,0);
         startOfWeek = startOfWeek.minusDays(now.getDayOfWeek().compareTo(DayOfWeek.MONDAY));
@@ -89,16 +95,7 @@ public class MainActivity extends AppCompatActivity {
         });
         epilepticBG(constraintLayout);
 
-        font = preferences.getString("font","tnm");
         updateFont(eventName, eventTime, nextEvent);
-
-        ReaderUtils readerUtils = new ReaderUtils(this);
-        List<String> allTextLines = readerUtils.readLine(preferences.getString("class","a11_2020")+".csv");
-        for(String s : allTextLines) {
-            String[] ss = s.split(",");
-            Triplet pr = new Triplet(ss[0], Long.parseLong(ss[1]), Integer.parseInt(ss[2]));
-            events.add(pr);
-        }
 
         final Thread thread = new Thread() {
             @Override
@@ -107,10 +104,8 @@ public class MainActivity extends AppCompatActivity {
                     while (!isInterrupted()) {
                         Thread.sleep(1000);
                         runOnUiThread(() -> {
-                            if(!font.equalsIgnoreCase(preferences.getString("font","tnm"))) {
-                                font = preferences.getString("font","tnm");
-                                updateFont(eventName, eventTime, nextEvent);
-                            }
+                            if(!classCode.equalsIgnoreCase(preferences.getString("class", "a11_2020"))) updateClassCode();
+                            if(!font.equalsIgnoreCase(preferences.getString("font","tnm"))) updateFont(eventName, eventTime, nextEvent);
                             if(enableNotification != preferences.getBoolean("notify",true)) {
                                 enableNotification = !enableNotification;
                                 if(!enableNotification) notificationUtils.cancelNotification(0);
@@ -138,22 +133,34 @@ public class MainActivity extends AppCompatActivity {
                                     else musicUtils.play(5000);
                                     lastIndex = index;
                                 }
-                                if(enableNotification) notificationUtils.showNotification(0, events.get(index).first, TimeUtils.convertFromSeconds(s,true));
+                                if(enableNotification) {
+                                    int minsToNotify;
+                                    try {
+                                        minsToNotify = Integer.parseInt(preferences.getString("minutesForShowingNotification","1440"));
+                                    } catch (IllegalArgumentException e) {
+                                        minsToNotify = 1440;
+                                    }
+                                    if(s <= 60*minsToNotify)
+                                        notificationUtils.showNotification(0, events.get(index).first, TimeUtils.convertFromSeconds(s,true));
+                                    else if(notificationUtils.isNotificationShowed()) notificationUtils.cancelNotification(0);
+                                }
 
                                 StringBuilder next = new StringBuilder();
                                 int t = preferences.getInt("showUpcomingEvents",10)+1;
                                 for(int i=index+1;i<index+t && i<events.size();i++) {
                                     if(!preferences.getBoolean("showDormitory", false) && events.get(i).third == 0) {t++;continue;}
+                                    if(!preferences.getBoolean("showBreaks", true) && events.get(i).first.equalsIgnoreCase("break")) {t++;continue;}
                                     next.append(events.get(i).first).append(" ").append(TimeUtils.convertFromSeconds(events.get(i).second - secsBetweenNowAndStart, false)).append("\n");
                                 }
 
                                 nextEvent.setText(next);
                             } else {
-                                eventName.setText(R.string.no_further_events);
-                                nextEvent.setText("");
+                                eventName.setText(getString(R.string.no_further_events));
+                                if(showThatNoInternetConnection) nextEvent.setText(getString(R.string.internet_needed));
+                                else nextEvent.setText("");
                                 long s = 7*24*60*60-secsBetweenNowAndStart;
                                 eventTime.setText(TimeUtils.convertFromSeconds(s,true));
-                                if(enableNotification) notificationUtils.showNotification(0, R.string.no_further_events+"", TimeUtils.convertFromSeconds(s,true));
+                                if(enableNotification) notificationUtils.showNotification(0, getString(R.string.no_further_events), TimeUtils.convertFromSeconds(s,true));
                                 weekEnded = true;
                             }
                             now = LocalDateTime.now();
@@ -165,7 +172,31 @@ public class MainActivity extends AppCompatActivity {
         thread.start();
     }
 
+    private void updateClassCode() {
+        classCode = preferences.getString("class","a11_2020");
+
+        UpdateUtils updateUtils = new UpdateUtils(getSharedPreferences("classVersions", MODE_PRIVATE));
+        if(!UpdateUtils.isInternetAvailable()) {
+            File file = new File(getFilesDir() + "/" + classCode + ".csv");
+            if(!file.exists()) {
+                showThatNoInternetConnection = true;
+                return;
+            }
+        } else {
+            updateUtils.update(getFilesDir().getAbsolutePath(), classCode);
+        }
+
+        ReaderUtils readerUtils = new ReaderUtils(this);
+        List<String> allTextLines = readerUtils.readLine(getFilesDir() + "/" + classCode+".csv");
+        for(String s : allTextLines) {
+            String[] ss = s.split(",");
+            Triplet pr = new Triplet(ss[0], Long.parseLong(ss[1]), Integer.parseInt(ss[2]));
+            events.add(pr);
+        }
+    }
+
     private void updateFont(TextView eventName, TextView eventTime, TextView nextEvent) {
+        font = preferences.getString("font","tnm");
         if(font.equalsIgnoreCase("anime_ace")) {
             eventName.setTypeface(ResourcesCompat.getFont(this, R.font.anime_ace));
             eventTime.setTypeface(ResourcesCompat.getFont(this, R.font.anime_ace));

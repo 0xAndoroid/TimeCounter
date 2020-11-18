@@ -3,10 +3,7 @@ package xyz.andoroid.timecounter.model;
 import android.content.Context;
 import android.content.res.AssetManager;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,8 +20,9 @@ public class ReaderUtils {
         AssetManager am = mContext.getAssets();
 
         try {
-            InputStream is = am.open(path);
-            BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+            //InputStream is = am.open(path);
+            //BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+            BufferedReader reader = new BufferedReader(new FileReader(new File(path)));
             String line;
 
             while ((line = reader.readLine()) != null)

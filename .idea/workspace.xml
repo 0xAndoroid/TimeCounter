@@ -2,40 +2,59 @@
 <project version="4">
   <component name="AndroidLayouts">
     <shared>
-      <config>
-        <device id="pixel_3a_xl" />
-      </config>
+      <config />
     </shared>
   </component>
-  <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="ccaeb3bb-432f-444a-9a46-fd32f66e8256" name="Default Changelist" comment="v2.1.1&#10;Added &quot;Enable notification&quot; in preferences&#10;Fixed some bugs&#10;Cleaned up code">
+    <list default="true" id="46244ee5-0408-4aea-89a3-9a7abf3f3217" name="Default Changelist" comment="v2.2.1 (19)&#10;Added synchronizing with WEB for schedule updates&#10;Added &quot;Notify within only X mins&quot; preference&#10;Added &quot;Show breaks&quot; preference&#10;Fixed some bugs">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_activity_activity_1_1_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_arch_core_core_runtime_2_1_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_constraintlayout_constraintlayout_2_0_4_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_constraintlayout_constraintlayout_solver_2_0_4_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_fragment_fragment_1_2_4_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_common_2_2_0_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_livedata_core_2_2_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_runtime_2_2_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_viewmodel_2_2_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_viewmodel_savedstate_2_2_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_preference_preference_1_1_1_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/xyz/andoroid/timecounter/model/NetworkAvailability.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/xyz/andoroid/timecounter/model/UpdateUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/xyz/andoroid/timecounter/model/WebAppUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/xml/network_security_config.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webapp/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webapp/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webapp/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webapp/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webapp/.idea/webapp.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webapp/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_activity_activity_1_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_arch_core_core_runtime_2_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_constraintlayout_constraintlayout_2_0_1_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_constraintlayout_constraintlayout_solver_2_0_1_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_fragment_fragment_1_1_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_common_2_1_0_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_livedata_core_2_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_runtime_2_1_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_viewmodel_2_1_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_preference_preference_1_1_0_alpha05_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/render.experimental.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/a11_2020.csv" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/a11_2020.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/xyz/andoroid/timecounter/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/xyz/andoroid/timecounter/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/xyz/andoroid/timecounter/SettingsActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/xyz/andoroid/timecounter/SettingsActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/xyz/andoroid/timecounter/model/NotificationUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/xyz/andoroid/timecounter/model/NotificationUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/xyz/andoroid/timecounter/model/ReaderUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/xyz/andoroid/timecounter/model/ReaderUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values-ru-rRU/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-ru-rRU/strings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values-uk/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-uk/strings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
@@ -46,7 +65,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_3_XL_API_30" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="4.65_720p_Galaxy_Nexus_API_30" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -65,83 +84,40 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="layoutResourceFile_vertical" />
         <option value="Class" />
-        <option value="valueResourceFile" />
-        <option value="layoutResourceFile" />
-        <option value="resourceFile" />
       </list>
     </option>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>build</find>
-    </findStrings>
-  </component>
   <component name="GenerateSignedApkSettings">
     <option name="EXPORT_PRIVATE_KEY" value="false" />
-    <option name="KEY_STORE_PATH" value="C:\Users\Andriy Tretyakov\.android\ks.jks" />
+    <option name="KEY_STORE_PATH" value="C:\Andriy\Coding\Keys\keystore.jks" />
     <option name="KEY_ALIAS" value="key0" />
     <option name="REMEMBER_PASSWORDS" value="true" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="1h5l7hRqijne5wWgJT3wr2YDRee" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectId" id="1kEegm488QdbL4v1DegKSgPTBBC" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="Pixel_3_XL_API_30" />
-    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-09-10T11:39:59.801380Z" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="4.65_720p_Galaxy_Nexus_API_30" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-11-18T11:49:52.599282200Z" />
     <property name="ExportApk.ApkPath" value="C:\Andriy\Coding\Java\TimeCounterUPML\app" />
     <property name="ExportApk.BuildVariants" value="release" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/assets" />
-    <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.17" />
+    <property name="last_opened_file_path" value="$USER_HOME$/.android/maps.jsk" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.XML" />
-  </component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Andriy\Coding\Java\TimeCounterUPML\app\src\main\assets" />
-      <recent name="C:\Andriy\Coding\Java\TimeCounterUPML\app\src\main\res\raw" />
-      <recent name="C:\Andriy\Coding\Java\AndroidStudioProjects\app\src\main\assets" />
-      <recent name="C:\Andriy\Coding\Java\AndroidStudioProjects\app\src\main\res\assets" />
-      <recent name="C:\Andriy\Coding\Java\AndroidStudioProjects\app\src\main\res\files" />
-    </key>
-    <key name="android.template.packageName">
-      <recent name="xyz.andoroid.timecounter" />
-    </key>
-    <key name="android.template.parentActivityClass">
-      <recent name="" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Andriy\Coding\Java\TimeCounterUPML\app\src\main\assets" />
-      <recent name="C:\Andriy\Coding\Java\TimeCounterUPML\app\src\main\res\font" />
-      <recent name="C:\Andriy\Coding\Java\TimeCounterUPML\app\src\main\res\drawable" />
-      <recent name="C:\Andriy\Coding\Java\AndroidStudioProjects\app\src\main\res\font" />
-    </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
-      <option name="TEST_OBJECT" value="class" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <method v="2">
-        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
       <module name="app" />
       <option name="DEPLOY" value="true" />
@@ -190,244 +166,92 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="ccaeb3bb-432f-444a-9a46-fd32f66e8256" name="Default Changelist" comment="" />
-      <created>1599053792363</created>
+      <changelist id="46244ee5-0408-4aea-89a3-9a7abf3f3217" name="Default Changelist" comment="" />
+      <created>1605270291205</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1599053792363</updated>
-      <workItem from="1599308672513" duration="333000" />
-      <workItem from="1599330760063" duration="80000" />
-      <workItem from="1599369329100" duration="116000" />
-      <workItem from="1599478541365" duration="3897000" />
-      <workItem from="1599483112924" duration="300000" />
-      <workItem from="1599736115498" duration="2451000" />
-      <workItem from="1599746029000" duration="14000" />
-      <workItem from="1601547144958" duration="664000" />
-      <workItem from="1602262255514" duration="331000" />
-      <workItem from="1603048225810" duration="120000" />
-      <workItem from="1604757418539" duration="3697000" />
-      <workItem from="1604761386378" duration="6039000" />
-      <workItem from="1605010511767" duration="2782000" />
-      <workItem from="1605014021164" duration="2748000" />
-      <workItem from="1605017455865" duration="2900000" />
-      <workItem from="1605020372565" duration="14000" />
+      <updated>1605270291205</updated>
+      <workItem from="1605270294274" duration="63000" />
+      <workItem from="1605270375975" duration="4929000" />
+      <workItem from="1605305473040" duration="2545000" />
+      <workItem from="1605346020717" duration="3906000" />
+      <workItem from="1605352423768" duration="304000" />
+      <workItem from="1605532799746" duration="1716000" />
+      <workItem from="1605692869017" duration="8520000" />
     </task>
-    <task id="LOCAL-00001" summary="Added media player&#10;Fixed some bugs">
-      <created>1599110484988</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1599110484988</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Added icons&#10;Fixed some bugs (media player, csv file)">
-      <created>1599140994416</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1599140994417</updated>
-    </task>
-    <task id="LOCAL-00003" summary="v1.4&#10;Added notifications">
-      <created>1599143427307</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1599143427307</updated>
-    </task>
-    <task id="LOCAL-00004" summary="v1.4&#10;Added ring switch&#10;Improved music player&#10;Added notification transfer to app">
-      <created>1599226079959</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1599226079959</updated>
-    </task>
-    <task id="LOCAL-00005" summary="v1.4.1&#10;Fixed notification bugs">
-      <created>1599229037087</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1599229037087</updated>
-    </task>
-    <task id="LOCAL-00006" summary="v1.4.2&#10;Fixed cvs&#10;Fixed time showing">
-      <created>1599229508072</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1599229508072</updated>
-    </task>
-    <task id="LOCAL-00007" summary="v1.5&#10;Added preferences saving&#10;Fixed ringing bugs">
-      <created>1599299918542</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1599299918543</updated>
-    </task>
-    <task id="LOCAL-00008" summary="v1.6&#10;Added dormitory switch&#10;Deleted epileptic bg changing&#10;Fixed bugs&#10;Added some optimization">
-      <created>1599483381288</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1599483381289</updated>
-    </task>
-    <task id="LOCAL-00009" summary="v1.7&#10;Fixed bugs with dormitory switch&#10;Due to users' need-based complains returned epileptic bg changing&#10;Fixed cvs (Jerks time)">
-      <created>1599738351968</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1599738351968</updated>
-    </task>
-    <task id="LOCAL-00010" summary="v2.0.1&#10;Fixed cvs&#10;Some updates">
-      <created>1604767853888</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1604767853888</updated>
-    </task>
-    <task id="LOCAL-00011" summary="v2.1.0&#10;Changed schedule&#10;Added about information in preferences&#10;Added amount of upcoming events in preferences&#10;No need to restart app for font changes&#10;Added new font &quot;Sans Serif&quot;&#10;Font is now bigger">
-      <created>1605016434266</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1605016434266</updated>
-    </task>
-    <option name="localTasksCounter" value="12" />
     <servers />
-  </component>
-  <component name="TodoView">
-    <todo-panel id="selected-file">
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-    <todo-panel id="all">
-      <are-packages-shown value="true" />
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="UnknownFeatures">
-    <option featureType="com.intellij.fileTypeFactory" implementationName="*.csv" />
-  </component>
-  <component name="Vcs.Log.History.Properties">
-    <option name="COLUMN_ORDER">
-      <list>
-        <option value="0" />
-        <option value="2" />
-        <option value="3" />
-        <option value="1" />
-      </list>
-    </option>
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
-          </value>
-        </entry>
-      </map>
-    </option>
-    <option name="RECENT_FILTERS">
-      <map>
-        <entry key="Branch">
-          <value>
-            <list />
-          </value>
-        </entry>
-        <entry key="User">
-          <value>
-            <list />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="v1.1&#10;Added media player&#10;Fixed some bugs" />
-    <MESSAGE value="v1.2&#10;Added icons&#10;Fixed some bugs (media player, csv file)" />
-    <MESSAGE value="v1.3&#10;Added notifications" />
-    <MESSAGE value="v1.3.1&#10;Fixed warnings (useless)" />
-    <MESSAGE value="v1.4&#10;Added ring switch&#10;Improved music player&#10;Added notification transfer to app" />
-    <MESSAGE value="v1.4.1&#10;Fixed notification bugs" />
-    <MESSAGE value="v1.4.2&#10;Fixed cvs&#10;Fixed time showing" />
-    <MESSAGE value="v1.5&#10;Added preferences saving&#10;Fixed ringing bugs" />
-    <MESSAGE value="v1.6&#10;Added dormitory switch&#10;Deleted epileptic bg changing&#10;Fixed bugs&#10;Added some optimization" />
-    <MESSAGE value="v1.7&#10;Fixed bugs with dormitory switch&#10;Due to users' need-based complains returned epileptic bg changing&#10;Fixed cvs (Jerks time)" />
-    <MESSAGE value="v2.0.1&#10;Fixed cvs&#10;Some updates" />
-    <MESSAGE value="v2.1.0&#10;Changed schedule&#10;Added about information in preferences&#10;Added amount of upcoming events in preferences&#10;No need to restart app for font changes&#10;Added new font &quot;Sans Serif&quot;&#10;Font is now bigger" />
-    <MESSAGE value="v2.1.1&#10;Added &quot;Enable notification&quot; in preferences&#10;Fixed some bugs&#10;Cleaned up code" />
-    <option name="LAST_COMMIT_MESSAGE" value="v2.1.1&#10;Added &quot;Enable notification&quot; in preferences&#10;Fixed some bugs&#10;Cleaned up code" />
-  </component>
   <component name="WindowStateProjectService">
-    <state x="225" y="69" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605013755401">
+    <state x="362" y="72" key="#Project_Structure" timestamp="1605270303626">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="225" y="69" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1605013755401" />
-    <state x="575" y="123" key="#com.intellij.ide.util.MemberChooser" timestamp="1604759883772">
+    <state x="362" y="72" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1605270303626" />
+    <state x="225" y="69" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605696828674">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="575" y="123" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1604759883772" />
-    <state x="350" y="169" key="AndroidCreateResourceDirectoryDialog" timestamp="1604759050470">
+    <state x="225" y="69" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1605696828674" />
+    <state x="575" y="123" key="#com.intellij.ide.util.MemberChooser" timestamp="1605306313836">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="350" y="169" key="AndroidCreateResourceDirectoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1604759050470" />
-    <state x="350" y="169" key="AndroidCreateResourceFileDialog" timestamp="1604759082596">
+    <state x="575" y="123" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1605306313836" />
+    <state x="606" y="179" key="AndroidProcessChooserDialog" timestamp="1605306138134">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="350" y="169" key="AndroidCreateResourceFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1604759082596" />
-    <state x="325" y="0" key="CommitChangelistDialog2" timestamp="1605020427281">
+    <state x="606" y="179" key="AndroidProcessChooserDialog/0.0.1536.824@0.0.1536.824" timestamp="1605306138134" />
+    <state x="345" y="0" key="CommitChangelistDialog2" timestamp="1605702612373">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="325" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1605020427281" />
-    <state x="550" y="169" key="FileChooserDialogImpl" timestamp="1601547550088">
+    <state x="345" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1605702612373" />
+    <state x="611" y="169" key="FileChooserDialogImpl" timestamp="1605533710647">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="550" y="169" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1601547550088" />
-    <state width="1493" height="209" key="GridCell.Tab.0.bottom" timestamp="1605020357909">
+    <state x="611" y="169" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1605533710647" />
+    <state width="1493" height="218" key="GridCell.Tab.0.bottom" timestamp="1605700270076">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="209" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1605020357909" />
-    <state width="1493" height="209" key="GridCell.Tab.0.center" timestamp="1605020357908">
+    <state width="1493" height="218" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1605700270076" />
+    <state width="1493" height="218" key="GridCell.Tab.0.center" timestamp="1605700270076">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="209" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1605020357908" />
-    <state width="1493" height="209" key="GridCell.Tab.0.left" timestamp="1605020357908">
+    <state width="1493" height="218" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1605700270076" />
+    <state width="1493" height="218" key="GridCell.Tab.0.left" timestamp="1605700270075">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="209" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1605020357908" />
-    <state width="1493" height="209" key="GridCell.Tab.0.right" timestamp="1605020357908">
+    <state width="1493" height="218" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1605700270075" />
+    <state width="1493" height="218" key="GridCell.Tab.0.right" timestamp="1605700270076">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="209" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1605020357908" />
-    <state x="279" y="56" key="SettingsEditor" timestamp="1604757462077">
+    <state width="1493" height="218" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1605700270076" />
+    <state width="1493" height="262" key="GridCell.Tab.1.bottom" timestamp="1605349930935">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="279" y="56" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1604757462077" />
-    <state x="585" y="192" key="chooseDestDirectoryDialog" timestamp="1599738100796">
+    <state width="1493" height="262" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1605349930935" />
+    <state width="1493" height="262" key="GridCell.Tab.1.center" timestamp="1605349930935">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="585" y="192" key="chooseDestDirectoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1599738100796" />
-    <state x="94" y="94" width="1349" height="637" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1599482234785">
+    <state width="1493" height="262" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1605349930935" />
+    <state width="1493" height="262" key="GridCell.Tab.1.left" timestamp="1605349930935">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="94" y="94" width="1349" height="637" key="com.android.tools.idea.avdmanager.AvdListDialog/0.0.1536.824@0.0.1536.824" timestamp="1599482234785" />
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ScopeChooserConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
+    <state width="1493" height="262" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1605349930935" />
+    <state width="1493" height="262" key="GridCell.Tab.1.right" timestamp="1605349930935">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="262" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1605349930935" />
+    <state x="94" y="94" width="1349" height="637" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1605697309807">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="94" y="94" width="1349" height="637" key="com.android.tools.idea.avdmanager.AvdListDialog/0.0.1536.824@0.0.1536.824" timestamp="1605697309807" />
+    <state x="94" y="94" width="1349" height="637" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1605349931022">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="94" y="94" width="1349" height="637" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1605349931022" />
+    <state x="539" y="117" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1605273811609">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="539" y="117" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1536.824@0.0.1536.824" timestamp="1605273811609" />
   </component>
 </project>

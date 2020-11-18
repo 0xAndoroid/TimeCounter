@@ -26,6 +26,18 @@
                 app:title="@string/enable_notification"
                 app:defaultValue="true"/>
 
+        <EditTextPreference
+                android:key="minutesForShowingNotification"
+                android:title="@string/hours_for_notifying"
+                app:useSimpleSummaryProvider="true"
+                android:dialogTitle="@string/settings_dialog_message"
+                android:dependency="notify" />
+
+        <SwitchPreferenceCompat
+                app:key="showBreaks"
+                app:title="@string/show_breaks"
+                app:defaultValue="true"/>
+
         <SwitchPreferenceCompat
                 app:key="ring"
                 app:title="@string/ring"
@@ -65,14 +77,14 @@
                 android:selectable="false"
                 android:persistent="false"
                 android:title="@string/release_name"
-                android:summary="v2.1.1"/>
+                android:summary="v2.2.1"/>
 
         <Preference
                 android:key="version"
                 android:selectable="false"
                 android:persistent="false"
                 android:title="@string/version"
-                android:summary="17"/>
+                android:summary="19"/>
     </PreferenceCategory>
 
 
