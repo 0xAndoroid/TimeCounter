@@ -5,12 +5,45 @@
       <config />
     </shared>
   </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="46244ee5-0408-4aea-89a3-9a7abf3f3217" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/app/TimeCounter.app.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/ic_launcher-playstore.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/ic_launcher_background.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/getversion.php" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/getversion.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TimeCounter.iml" beforeDir="false" afterPath="$PROJECT_DIR$/TimeCounter.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher_foreground.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher_foreground.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher_round.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher_round.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher_foreground.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher_foreground.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher_round.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher_round.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher_foreground.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher_foreground.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher_foreground.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher_foreground.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher_foreground.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher_foreground.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-ru-rRU/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-ru-rRU/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-uk/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-uk/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,9 +62,6 @@
         <projects_view />
       </state>
     </system>
-  </component>
-  <component name="FavoritesManager">
-    <favorites_list name="TimeCounter" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -52,7 +82,6 @@
   <component name="ProjectId" id="1kEegm488QdbL4v1DegKSgPTBBC" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
@@ -68,13 +97,42 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
+    <property name="recommended.upgrade.last.time.stamp" value="1605720771927" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Andriy\Coding\Java\TimeCounterUPML\webapp" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Android App.TimeCounter.app">
+    <configuration name="TimeCounter.app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
+      <module name="TimeCounter.app" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="DEBUGGER_TYPE" value="Java" />
+      <Java />
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
       <module name="app" />
       <option name="DEPLOY" value="true" />
@@ -90,8 +148,6 @@
       <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
       <option name="FORCE_STOP_RUNNING_APP" value="true" />
       <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
-      <option name="PREFERRED_AVD" value="" />
       <option name="DEBUGGER_TYPE" value="Java" />
       <Java />
       <Profilers>
@@ -105,19 +161,19 @@
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
   </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
-  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -135,7 +191,9 @@
       <workItem from="1605352423768" duration="304000" />
       <workItem from="1605532799746" duration="1716000" />
       <workItem from="1605692869017" duration="10709000" />
-      <workItem from="1605716887672" duration="953000" />
+      <workItem from="1605716887672" duration="1229000" />
+      <workItem from="1605719967575" duration="366000" />
+      <workItem from="1605720595586" duration="421000" />
     </task>
     <task id="LOCAL-00001" summary="v2.2.1 (19)&#10;Added synchronizing with WEB for schedule updates&#10;Added &quot;Notify within only X mins&quot; preference&#10;Added &quot;Show breaks&quot; preference&#10;Fixed some bugs&#10;Simplified code">
       <created>1605702727991</created>
@@ -155,7 +213,7 @@
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="v2.2.1 (19)&#10;Added synchronizing with WEB for schedule updates&#10;Added &quot;Notify within only X mins&quot; preference&#10;Added &quot;Show breaks&quot; preference&#10;Fixed some bugs&#10;Simplified code" />
@@ -163,10 +221,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="Webapp update" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="362" y="72" key="#Project_Structure" timestamp="1605270303626">
+    <state x="362" y="0" key="#Project_Structure" timestamp="1605720778148">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="362" y="72" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1605270303626" />
+    <state x="362" y="0" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1605720778148" />
     <state x="225" y="69" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605696828674">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -183,10 +241,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="345" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1605703522284" />
-    <state x="611" y="169" key="FileChooserDialogImpl" timestamp="1605533710647">
+    <state x="611" y="169" key="FileChooserDialogImpl" timestamp="1605720944702">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="611" y="169" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1605533710647" />
+    <state x="611" y="169" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1605720944702" />
     <state width="1493" height="218" key="GridCell.Tab.0.bottom" timestamp="1605700270076">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

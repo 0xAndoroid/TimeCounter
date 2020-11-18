@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">UPML Time Counter</string>
+    <string name="app_name" translatable="false">Time Counter</string>
     <string name="loading">Loading</string>
     <string name="dormitory">Show events for dormitory</string>
     <string name="ring">Ring</string>
