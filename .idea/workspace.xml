@@ -6,59 +6,8 @@
     </shared>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="46244ee5-0408-4aea-89a3-9a7abf3f3217" name="Default Changelist" comment="v2.2.1 (19)&#10;Added synchronizing with WEB for schedule updates&#10;Added &quot;Notify within only X mins&quot; preference&#10;Added &quot;Show breaks&quot; preference&#10;Fixed some bugs">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_activity_activity_1_1_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_arch_core_core_runtime_2_1_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_constraintlayout_constraintlayout_2_0_4_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_constraintlayout_constraintlayout_solver_2_0_4_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_fragment_fragment_1_2_4_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_common_2_2_0_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_livedata_core_2_2_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_runtime_2_2_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_viewmodel_2_2_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_viewmodel_savedstate_2_2_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_preference_preference_1_1_1_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/xyz/andoroid/timecounter/model/NetworkAvailability.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/xyz/andoroid/timecounter/model/UpdateUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/xyz/andoroid/timecounter/model/WebAppUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/xml/network_security_config.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/.idea/webapp.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/taskHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/render.experimental.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
+    <list default="true" id="46244ee5-0408-4aea-89a3-9a7abf3f3217" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/a11_2020.csv" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/a11_2020.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/xyz/andoroid/timecounter/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/xyz/andoroid/timecounter/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/xyz/andoroid/timecounter/SettingsActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/xyz/andoroid/timecounter/SettingsActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/xyz/andoroid/timecounter/model/NotificationUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/xyz/andoroid/timecounter/model/NotificationUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/xyz/andoroid/timecounter/model/ReaderUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/xyz/andoroid/timecounter/model/ReaderUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-ru-rRU/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-ru-rRU/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-uk/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-uk/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/xml/root_preferences.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/xml/root_preferences.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +61,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/.android/maps.jsk" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/webapp" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -177,12 +126,24 @@
       <workItem from="1605346020717" duration="3906000" />
       <workItem from="1605352423768" duration="304000" />
       <workItem from="1605532799746" duration="1716000" />
-      <workItem from="1605692869017" duration="8520000" />
+      <workItem from="1605692869017" duration="9256000" />
     </task>
+    <task id="LOCAL-00001" summary="v2.2.1 (19)&#10;Added synchronizing with WEB for schedule updates&#10;Added &quot;Notify within only X mins&quot; preference&#10;Added &quot;Show breaks&quot; preference&#10;Fixed some bugs&#10;Simplified code">
+      <created>1605702727991</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1605702727991</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="v2.2.1 (19)&#10;Added synchronizing with WEB for schedule updates&#10;Added &quot;Notify within only X mins&quot; preference&#10;Added &quot;Show breaks&quot; preference&#10;Fixed some bugs&#10;Simplified code" />
+    <option name="LAST_COMMIT_MESSAGE" value="v2.2.1 (19)&#10;Added synchronizing with WEB for schedule updates&#10;Added &quot;Notify within only X mins&quot; preference&#10;Added &quot;Show breaks&quot; preference&#10;Fixed some bugs&#10;Simplified code" />
   </component>
   <component name="WindowStateProjectService">
     <state x="362" y="72" key="#Project_Structure" timestamp="1605270303626">
@@ -201,10 +162,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="606" y="179" key="AndroidProcessChooserDialog/0.0.1536.824@0.0.1536.824" timestamp="1605306138134" />
-    <state x="345" y="0" key="CommitChangelistDialog2" timestamp="1605702612373">
+    <state x="345" y="0" key="CommitChangelistDialog2" timestamp="1605702726687">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="345" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1605702612373" />
+    <state x="345" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1605702726687" />
     <state x="611" y="169" key="FileChooserDialogImpl" timestamp="1605533710647">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
