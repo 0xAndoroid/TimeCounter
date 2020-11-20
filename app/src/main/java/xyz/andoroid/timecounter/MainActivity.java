@@ -48,12 +48,14 @@ public class MainActivity extends AppCompatActivity {
     private boolean weekEnded = false;
 
     private boolean dormitorySwitchJustChanged = false;
+    private boolean dormitorySwitch;
 
     private String classCode;
     private boolean showThatNoInternetConnection = false;
 
     private String font;
     private boolean enableNotification;
+    private String ringtone;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -74,7 +76,9 @@ public class MainActivity extends AppCompatActivity {
 
         enableNotification = preferences.getBoolean("notify",true);
 
-        musicUtils = new MusicUtils(this, R.raw.ring);
+        dormitorySwitch = preferences.getBoolean("showDormitory", false);
+        ringtone = preferences.getString("ringtone", "ring");
+        updateMusicPlayer();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -106,6 +110,11 @@ public class MainActivity extends AppCompatActivity {
                         runOnUiThread(() -> {
                             if(!classCode.equalsIgnoreCase(preferences.getString("class", "a11_2020"))) updateClassCode();
                             if(!font.equalsIgnoreCase(preferences.getString("font","tnm"))) updateFont(eventName, eventTime, nextEvent);
+                            if(!ringtone.equalsIgnoreCase(preferences.getString("ringtone", "ring"))) updateMusicPlayer();
+                            if(dormitorySwitch != preferences.getBoolean("showDormitory",false)) {
+                                dormitorySwitchJustChanged = true;
+                                dormitorySwitch = preferences.getBoolean("showDormitory",false);
+                            }
                             if(enableNotification != preferences.getBoolean("notify",true)) {
                                 enableNotification = !enableNotification;
                                 if(!enableNotification) notificationUtils.cancelNotification(0);
@@ -128,9 +137,10 @@ public class MainActivity extends AppCompatActivity {
                                 long s = events.get(index).second-secsBetweenNowAndStart;
                                 eventTime.setText(TimeUtils.convertFromSeconds(s,true));
                                 if(lastIndex == -1) lastIndex = index;
-                                if(index != lastIndex && preferences.getBoolean("ring",true)) {
+                                if(index != lastIndex) {
                                     if(dormitorySwitchJustChanged) dormitorySwitchJustChanged = false;
-                                    else musicUtils.play(5000);
+                                    else if(preferences.getBoolean("ring",true))
+                                        musicUtils.play(preferences.getInt("ringtoneDuration",4)*1000);
                                     lastIndex = index;
                                 }
                                 if(enableNotification) {
@@ -172,7 +182,26 @@ public class MainActivity extends AppCompatActivity {
         thread.start();
     }
 
+    private void updateMusicPlayer() {
+        ringtone = preferences.getString("ringtone", "ring");
+        switch (ringtone) {
+            case "ukrhymn":
+                musicUtils = new MusicUtils(this, R.raw.ukrhymn);
+                break;
+            case "upmlhymn":
+                musicUtils = new MusicUtils(this, R.raw.upmlhymn);
+                break;
+            case "monkeys":
+                musicUtils = new MusicUtils(this, R.raw.monkey);
+                break;
+            default:
+                musicUtils = new MusicUtils(this, R.raw.ring);
+                break;
+        }
+    }
+
     private void updateClassCode() {
+        dormitorySwitchJustChanged = true;
         events.clear();
         classCode = preferences.getString("class","a11_2020");
 

@@ -8,7 +8,7 @@
     <string name="title_activity_settings">Настройки</string>
     <string name="no_further_events">Конец недели</string>
     <string name="epilepticBG">Епилептический фон</string>
-    <string name="epilepticBG_summary">Может жрать батарею</string>
+    <string name="epilepticBG_summary">Может жрать батарею, необходим перезаруск</string>
     <string name="settings_title">Количество будущих событий</string>
     <string name="settings_dialog_message">Выберите значение</string>
     <string name="about">О программе</string>
@@ -21,4 +21,5 @@
     <string name="hours_for_notifying">Оповещать только за Х мин.</string>
     <string name="version_of_file">Версия расписания</string>
     <string name="show_breaks">Показывать перемены</string>
+    <string name="ring_duration">Длинна звонка</string>
 </resources>

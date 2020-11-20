@@ -8,7 +8,7 @@
     <string name="select_class">Select class</string>
     <string name="no_further_events">End of the week</string>
     <string name="epilepticBG">Epileptic background</string>
-    <string name="epilepticBG_summary">May drain battery</string>
+    <string name="epilepticBG_summary">May drain battery, restart needed</string>
     <string name="settings_dialog_message">Choose a value</string>
     <string name="settings_title">Amount of upcoming events</string>
     <string name="version">Version</string>
@@ -21,4 +21,5 @@
     <string name="hours_for_notifying">Notify within only X mins</string>
     <string name="version_of_file">Version of class schedule</string>
     <string name="show_breaks">Show breaks</string>
+    <string name="ring_duration">Ring duration</string>
 </resources>

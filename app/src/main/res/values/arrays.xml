@@ -19,4 +19,18 @@
     <string-array name="class_values">
         <item>a11_2020</item>
     </string-array>
+
+    <string-array name="ringtone_entries">
+        <item>Default</item>
+        <item>Ukrainian hymn</item>
+        <item>Hymn of UPML</item>
+        <item>Monkeys!</item>
+    </string-array>
+
+    <string-array name="ringtone_values">
+        <item>ring</item>
+        <item>ukrhymn</item>
+        <item>upmlhymn</item>
+        <item>monkeys</item>
+    </string-array>
 </resources>

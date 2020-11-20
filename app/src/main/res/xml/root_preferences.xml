@@ -43,6 +43,24 @@
                 app:title="@string/ring"
                 app:defaultValue="false"/>
 
+        <ListPreference
+                app:key="ringtone"
+                app:title="@string/ring"
+                app:entries="@array/ringtone_entries"
+                app:entryValues="@array/ringtone_values"
+                app:defaultValue="ring"
+                app:useSimpleSummaryProvider="true"
+                android:dependency="ring"/>
+
+        <SeekBarPreference
+                android:defaultValue="4"
+                android:dialogMessage="@string/settings_dialog_message"
+                android:key="ringtoneDuration"
+                android:max="10"
+                app:showSeekBarValue="true"
+                android:title="@string/ring_duration"
+                android:dependency="ring"/>
+
         <SwitchPreferenceCompat
                 app:key="showDormitory"
                 app:title="@string/dormitory"
@@ -77,14 +95,14 @@
                 android:selectable="false"
                 android:persistent="false"
                 android:title="@string/release_name"
-                android:summary="v2.2.3"/>
+                android:summary="v2.3.0"/>
 
         <Preference
                 android:key="version"
                 android:selectable="false"
                 android:persistent="false"
                 android:title="@string/version"
-                android:summary="21"/>
+                android:summary="22"/>
     </PreferenceCategory>
 
 
