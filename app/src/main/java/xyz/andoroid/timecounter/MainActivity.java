@@ -153,13 +153,13 @@ public class MainActivity extends AppCompatActivity {
                                     if(s <= 60*minsToNotify)
                                         notificationUtils.showNotification(0, events.get(index).first, TimeUtils.convertFromSeconds(s,true));
                                     else if(notificationUtils.isNotificationShowed()) notificationUtils.cancelNotification(0);
-                                }
+                                } else if(notificationUtils.isNotificationShowed()) notificationUtils.cancelNotification(0);
 
                                 StringBuilder next = new StringBuilder();
                                 int t = preferences.getInt("showUpcomingEvents",10)+1;
                                 for(int i=index+1;i<index+t && i<events.size();i++) {
                                     if(!preferences.getBoolean("showDormitory", false) && events.get(i).third == 0) {t++;continue;}
-                                    if(!preferences.getBoolean("showBreaks", true) && events.get(i).first.equalsIgnoreCase("break")) {t++;continue;}
+                                    if(!preferences.getBoolean("showBreaks", true) && (events.get(i).first.equalsIgnoreCase("break") || events.get(i).first.equalsIgnoreCase("перерва"))) {t++;continue;}
                                     next.append(events.get(i).first).append(" ").append(TimeUtils.convertFromSeconds(events.get(i).second - secsBetweenNowAndStart, false)).append("\n");
                                 }
 
@@ -170,7 +170,7 @@ public class MainActivity extends AppCompatActivity {
                                 else nextEvent.setText("");
                                 long s = 7*24*60*60-secsBetweenNowAndStart;
                                 eventTime.setText(TimeUtils.convertFromSeconds(s,true));
-                                if(enableNotification) notificationUtils.showNotification(0, getString(R.string.no_further_events), TimeUtils.convertFromSeconds(s,true));
+                                if(notificationUtils.isNotificationShowed()) notificationUtils.cancelNotification(0);
                                 weekEnded = true;
                             }
                             now = LocalDateTime.now();

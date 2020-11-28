@@ -95,14 +95,14 @@
                 android:selectable="false"
                 android:persistent="false"
                 android:title="@string/release_name"
-                android:summary="v2.3.0"/>
+                android:summary="v2.3.1"/>
 
         <Preference
                 android:key="version"
                 android:selectable="false"
                 android:persistent="false"
                 android:title="@string/version"
-                android:summary="22"/>
+                android:summary="23"/>
     </PreferenceCategory>
 
 
