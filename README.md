@@ -1,8 +1,8 @@
-# TimeCounterUPML
-TimeCounterUPML-11
-An app that helps UPML students to stay productive
+# TimeCounter
+TimeCounter
+An app that helps students to stay productive
 
-API:
+API (not working right now):
 tcapi.andoroid.xyz/getversion.php?class=%CLASSCODE% - get current version of class file
 tcapi.andoroid.xyz/getclass.php?class=%CLASSCODE%.csv - get class file
 
