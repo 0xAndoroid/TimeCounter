@@ -9,19 +9,19 @@ import android.os.Build;
 
 import androidx.core.app.NotificationCompat;
 
+import androidx.core.app.NotificationManagerCompat;
 import xyz.andoroid.timecounter.MainActivity;
 import xyz.andoroid.timecounter.R;
 
 public class NotificationUtils {
     private Context context;
-    private NotificationManager notificationManager;
     private boolean setOngoing = true;
 
-    public NotificationUtils(NotificationManager nm, Context context) {
-        this.notificationManager = nm;
+    public NotificationUtils(Context context) {
         this.context = context;
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationChannel channel = new NotificationChannel("0", "Permanent notification", NotificationManager.IMPORTANCE_LOW);
+            NotificationManager notificationManager = context.getSystemService(NotificationManager.class);
+            NotificationChannel channel = new NotificationChannel("0", "Permanent notification", NotificationManager.IMPORTANCE_MAX);
             notificationManager.createNotificationChannel(channel);
         }
     }
@@ -44,17 +44,10 @@ public class NotificationUtils {
                 .setOngoing(setOngoing)
                 .setContentIntent(pIntent)
                 .setOnlyAlertOnce(true);
-        notificationManager.notify(id, notification.build());
-    }
-
-    public void cancelNotification(int id) {
-        notificationManager.cancel(id);
-    }
-
-    public boolean isNotificationShowed() {
-        return notificationManager.getActiveNotifications().length != 0;
+        NotificationManagerCompat.from(context).notify(id, notification.build());
     }
 
     public void onStop() {
+
     }
 }

@@ -14,7 +14,7 @@ public class ReaderUtils {
         this.mContext = context;
     }
 
-    public List<String> readLine(String path) {
+    public List<String> readLine(InputStream stream) {
         List<String> mLines = new ArrayList<>();
 
         AssetManager am = mContext.getAssets();
@@ -22,11 +22,12 @@ public class ReaderUtils {
         try {
             //InputStream is = am.open(path);
             //BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-            BufferedReader reader = new BufferedReader(new FileReader(new File(path)));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
             String line;
 
             while ((line = reader.readLine()) != null)
                 mLines.add(line);
+            stream.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

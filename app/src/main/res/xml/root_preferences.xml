@@ -10,7 +10,7 @@
                 app:title="@string/select_class"
                 app:entries="@array/class_entries"
                 app:entryValues="@array/class_values"
-                app:defaultValue="a11_2020"
+                app:defaultValue="0"
                 app:useSimpleSummaryProvider="true"/>
 
         <SeekBarPreference
@@ -26,12 +26,10 @@
                 app:title="@string/enable_notification"
                 app:defaultValue="true"/>
 
-        <EditTextPreference
-                android:key="minutesForShowingNotification"
-                android:title="@string/hours_for_notifying"
-                app:useSimpleSummaryProvider="true"
-                android:dialogTitle="@string/settings_dialog_message"
-                android:dependency="notify" />
+        <SwitchPreferenceCompat
+                app:key="evenWeek"
+                app:title="@string/evenWeek"
+                app:defaultValue="false"/>
 
         <SwitchPreferenceCompat
                 app:key="showBreaks"
@@ -41,11 +39,13 @@
         <SwitchPreferenceCompat
                 app:key="ring"
                 app:title="@string/ring"
-                app:defaultValue="false"/>
+                app:defaultValue="false"
+                app:dependency="notify"/>
 
         <ListPreference
                 app:key="ringtone"
                 app:title="@string/ring"
+                app:summary="@string/ring_summary"
                 app:entries="@array/ringtone_entries"
                 app:entryValues="@array/ringtone_values"
                 app:defaultValue="ring"
@@ -61,11 +61,6 @@
                 android:title="@string/ring_duration"
                 android:dependency="ring"/>
 
-        <SwitchPreferenceCompat
-                app:key="showDormitory"
-                app:title="@string/dormitory"
-                app:defaultValue="false"/>
-
         <ListPreference
                 app:key="font"
                 app:title="@string/font"
@@ -74,11 +69,13 @@
                 app:defaultValue="tnm"
                 app:useSimpleSummaryProvider="true"/>
 
-        <SwitchPreferenceCompat
-                app:key="epilepticBG"
-                app:title="@string/epilepticBG"
-                app:summary="@string/epilepticBG_summary"
-                app:defaultValue="false"/>
+        <SeekBarPreference
+                android:defaultValue="50"
+                android:dialogMessage="@string/settings_dialog_message"
+                android:key="fontSize"
+                android:max="100"
+                app:showSeekBarValue="true"
+                android:title="@string/font_size" />
     </PreferenceCategory>
 
     <PreferenceCategory
@@ -95,14 +92,14 @@
                 android:selectable="false"
                 android:persistent="false"
                 android:title="@string/release_name"
-                android:summary="v2.3.1"/>
+                android:summary="v3.0.1"/>
 
         <Preference
                 android:key="version"
                 android:selectable="false"
                 android:persistent="false"
                 android:title="@string/version"
-                android:summary="23"/>
+                android:summary="27"/>
     </PreferenceCategory>
 
 

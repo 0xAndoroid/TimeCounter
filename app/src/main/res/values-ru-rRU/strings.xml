@@ -22,4 +22,7 @@
     <string name="version_of_file">Версия расписания</string>
     <string name="show_breaks">Показывать перемены</string>
     <string name="ring_duration">Длинна звонка</string>
+    <string name="evenWeek">Парная неделя</string>
+    <string name="ring_summary">Только если включены оповещения</string>
+    <string name="font_size">Размер шрифта</string>
 </resources>

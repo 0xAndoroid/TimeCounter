@@ -22,4 +22,7 @@
     <string name="version_of_file">Version of class schedule</string>
     <string name="show_breaks">Show breaks</string>
     <string name="ring_duration">Ring duration</string>
+    <string name="evenWeek">Even week</string>
+    <string name="ring_summary">Requires to show a notification</string>
+    <string name="font_size">Font size</string>
 </resources>

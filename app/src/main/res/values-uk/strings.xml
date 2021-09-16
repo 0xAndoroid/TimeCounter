@@ -22,4 +22,7 @@
     <string name="version_of_file">Версія розкладу</string>
     <string name="show_breaks">Показувати перерви</string>
     <string name="ring_duration">Довжина дзвінка</string>
+    <string name="evenWeek">Парний тиждень</string>
+    <string name="ring_summary">Тільки якщо увімкнуті сповіщення</string>
+    <string name="font_size">Розмір шрифту</string>
 </resources>

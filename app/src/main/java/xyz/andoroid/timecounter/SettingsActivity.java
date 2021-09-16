@@ -1,13 +1,13 @@
 package xyz.andoroid.timecounter;
 
 import android.os.Bundle;
-import android.util.Pair;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.ListPreference;
 import androidx.preference.PreferenceFragmentCompat;
-import xyz.andoroid.timecounter.model.UpdateUtils;
+import xyz.andoroid.timecounter.model.ReaderUtils;
 
+import java.io.IOException;
 import java.util.List;
 
 public class SettingsActivity extends AppCompatActivity {
@@ -31,14 +31,15 @@ public class SettingsActivity extends AppCompatActivity {
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
             setPreferencesFromResource(R.xml.root_preferences, rootKey);
             ListPreference preference = findPreference("class");
-            if(UpdateUtils.isInternetAvailable()) {
-                Pair<List<String>, List<String>> get =  UpdateUtils.getAllClasses();
-                if(get==null) return;
-                String[] entries = new String[get.first.size()];
-                String[] values = new String[get.first.size()];
-                for(int i=0;i<get.first.size();i++) {
-                    values[i] = get.first.get(i);
-                    entries[i] = get.second.get(i);
+            try {
+                ReaderUtils readerUtils = new ReaderUtils(getContext());
+                List<String> lines = readerUtils.readLine(getContext().getAssets().open("list.csv"));
+                String[] entries = new String[lines.size()];
+                String[] values = new String[lines.size()];
+                for (int i = 0; i < lines.size(); i++) {
+                    String[] split = lines.get(i).split(",");
+                    entries[i] = split[0];
+                    values[i] = split[1];
                 }
                 try {
                     assert preference != null;
@@ -47,9 +48,9 @@ public class SettingsActivity extends AppCompatActivity {
                 } catch (NullPointerException e) {
                     e.printStackTrace();
                 }
-
+            } catch (IOException ex) {
+                ex.printStackTrace();
             }
-
         }
     }
 }
