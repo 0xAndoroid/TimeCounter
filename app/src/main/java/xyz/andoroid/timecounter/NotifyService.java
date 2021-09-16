@@ -17,8 +17,6 @@ import java.util.List;
 public class NotifyService extends IntentService {
     private CounterIntentBackground ci;
 
-    private NotificationManager notificationManager;
-
     private LocalDateTime now;
     private SharedPreferences preferences;
 
@@ -36,13 +34,13 @@ public class NotifyService extends IntentService {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        startForeground(1, buildForegroundNotification(1, "TimeCounter", "Running"));
-        isRunning = true;
-        notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
             NotificationChannel channel = new NotificationChannel("0", "Permanent notification", NotificationManager.IMPORTANCE_MAX);
             notificationManager.createNotificationChannel(channel);
         }
+        startForeground(1, buildForegroundNotification(1, "TimeCounter", "Running"));
+        isRunning = true;
         ci = new CounterIntentBackground(this, this);
         now = LocalDateTime.now();
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
