@@ -1,9 +1,12 @@
 package xyz.andoroid.timecounter;
 
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.ListPreference;
+import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import xyz.andoroid.timecounter.model.ReaderUtils;
 
@@ -51,6 +54,12 @@ public class SettingsActivity extends AppCompatActivity {
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
+            Preference versionCode = findPreference("version");
+            Preference versionName = findPreference("release_name");
+            assert versionName != null;
+            versionName.setSummary(BuildConfig.BUILD_TYPE+" "+BuildConfig.VERSION_NAME);
+            assert versionCode != null;
+            versionCode.setSummary(BuildConfig.VERSION_CODE+"");
         }
     }
 }
