@@ -49,10 +49,12 @@ public class MainActivity extends AppCompatActivity {
 
         ci.startThreadForView();
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            startForegroundService(new Intent(this, NotifyService.class));
-        } else {
-            startService(new Intent(this, NotifyService.class));
+        if(!ci.isServiceRunning("xyz.andoroid.timecounter.NotifyService") && PreferenceManager.getDefaultSharedPreferences(this).getBoolean("notify", true)) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                startForegroundService(new Intent(this, NotifyService.class));
+            } else {
+                startService(new Intent(this, NotifyService.class));
+            }
         }
     }
 

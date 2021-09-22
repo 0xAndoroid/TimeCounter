@@ -1,6 +1,7 @@
 package xyz.andoroid.timecounter;
 
 import android.app.*;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
@@ -16,7 +17,7 @@ import java.util.List;
 
 public class NotifyService extends IntentService {
     private CounterIntentBackground ci;
-
+    private Intent intent;
     private LocalDateTime now;
     private SharedPreferences preferences;
 
@@ -24,7 +25,6 @@ public class NotifyService extends IntentService {
 
     public NotifyService() {
         super("NotifyService");
-
     }
 
     @Override
@@ -34,6 +34,7 @@ public class NotifyService extends IntentService {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        this.intent = intent;
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationManager notificationManager = getSystemService(NotificationManager.class);
             NotificationChannel channel = new NotificationChannel("0", "Permanent notification", NotificationManager.IMPORTANCE_MAX);
@@ -51,6 +52,7 @@ public class NotifyService extends IntentService {
     public void stop() {
         isRunning = false;
         stopForeground(true);
+        ci.context.stopService(intent);
     }
 
     private Notification buildForegroundNotification(int id, String title, String content) {

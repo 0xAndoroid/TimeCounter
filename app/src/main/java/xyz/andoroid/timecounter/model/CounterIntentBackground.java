@@ -1,9 +1,7 @@
 package xyz.andoroid.timecounter.model;
 
-import android.app.NotificationManager;
 import android.content.Context;
-import android.os.Build;
-import androidx.core.app.NotificationManagerCompat;
+import android.content.SharedPreferences;
 import org.threeten.bp.DayOfWeek;
 import org.threeten.bp.LocalDateTime;
 import org.threeten.bp.temporal.ChronoUnit;
@@ -16,9 +14,9 @@ public class CounterIntentBackground extends CounterIntent{
     private NotificationUtils notificationUtils;
     protected MusicUtils musicUtils;
 
+    private SharedPreferences sharedPreferences;
+
     protected String ringtone;
-
-
 
     public CounterIntentBackground(Context context, NotifyService notifyService) {
         super(context);
@@ -27,6 +25,8 @@ public class CounterIntentBackground extends CounterIntent{
         updateMusicPlayer();
         enableNotification = preferences.getBoolean("notify",true);
         ringtone = preferences.getString("ringtone", "ring");
+        sharedPreferences = context.getSharedPreferences("bg", 0);
+        sharedPreferences.edit().putBoolean("running", true).apply();
     }
 
     public void startThreadForBackground() {
@@ -36,14 +36,20 @@ public class CounterIntentBackground extends CounterIntent{
                 try {
                     while (!isInterrupted()) {
                         Thread.sleep(1000);
+                        System.out.println("Running BG");
+                        System.out.println("");
                         if(!classCode.equalsIgnoreCase(preferences.getString("class", "0"))) updateClassCode();
                         if(!ringtone.equalsIgnoreCase(preferences.getString("ringtone", "ring"))) updateMusicPlayer();
-
                         if(enableNotification != preferences.getBoolean("notify",true)) {
                             enableNotification = !enableNotification;
-                            System.out.println("STOP");
-                            if(!enableNotification && notifyService.isRunning()) notifyService.stop();
+                            if(!enableNotification && notifyService.isRunning()) {
+                                sharedPreferences.edit().putBoolean("running", false).apply();
+                                notifyService.stop();
+                                interrupt();
+                                System.out.println("Interrupt was called.");
+                            }
                         }
+                        if(evenWeek != preferences.getBoolean("evenWeek", false)) updateClassCode();
                         if(weekEnded) {
                             startOfWeek = LocalDateTime.of(now.getYear(), now.getMonth(), now.getDayOfMonth(), 0,0);
                             startOfWeek = startOfWeek.minusDays(now.getDayOfWeek().compareTo(DayOfWeek.MONDAY));

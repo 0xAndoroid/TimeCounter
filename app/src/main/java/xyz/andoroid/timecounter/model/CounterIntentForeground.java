@@ -1,5 +1,6 @@
 package xyz.andoroid.timecounter.model;
 
+import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -10,7 +11,13 @@ import xyz.andoroid.timecounter.MainActivity;
 import xyz.andoroid.timecounter.NotifyService;
 import xyz.andoroid.timecounter.R;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 public class CounterIntentForeground extends CounterIntent {
+    private static List<Intent> runningServices = new ArrayList<>();
+
     private MainActivity mainActivity;
 
     private String font;
@@ -31,15 +38,20 @@ public class CounterIntentForeground extends CounterIntent {
                 try {
                     while (!isInterrupted()) {
                         Thread.sleep(1000);
+                        System.out.println(isServiceRunning("xyz.andoroid.timecounter.NotifyService"));
                         mainActivity.runOnUiThread(() -> {
                             if (!classCode.equalsIgnoreCase(preferences.getString("class", "0"))) updateClassCode();
+                            if(evenWeek != preferences.getBoolean("evenWeek", false)) updateClassCode();
                             if (!font.equalsIgnoreCase(preferences.getString("font", "tnm")) || fontSize != preferences.getInt("fontSize", 50)) updateFont();
+                            if(!preferences.getBoolean("notify", true) && enableNotification) enableNotification = false;
                             if (preferences.getBoolean("notify", true) && !enableNotification) {
                                 enableNotification = true;
-                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                                    context.startForegroundService(new Intent(context, NotifyService.class));
-                                } else {
-                                    context.startService(new Intent(context, NotifyService.class));
+                                if(!isServiceRunning("xyz.andoroid.timecounter.NotifyService")) {
+                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                        context.startForegroundService(new Intent(context, NotifyService.class));
+                                    } else {
+                                        context.startService(new Intent(context, NotifyService.class));
+                                    }
                                 }
                             }
                             if (weekEnded) {
@@ -90,6 +102,18 @@ public class CounterIntentForeground extends CounterIntent {
         font = preferences.getString("font","tnm");
         fontSize = preferences.getInt("fontSize", 50);
         mainActivity.updateFont(font, fontSize);
+    }
+
+    public boolean isServiceRunning(String serviceName){
+        boolean serviceRunning = false;
+        ActivityManager am = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+        List<ActivityManager.RunningServiceInfo> l = am.getRunningServices(50);
+        for (ActivityManager.RunningServiceInfo runningServiceInfo : l) {
+            if (runningServiceInfo.service.getClassName().equals(serviceName)) {
+                serviceRunning = true;
+            }
+        }
+        return serviceRunning;
     }
 
 }
