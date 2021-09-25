@@ -64,6 +64,8 @@ public class CounterIntent {
                 i++;
             }
         } catch (IOException ex) {
+            preferences.edit().putString("class", "0").apply();
+            updateClassCode();
             ex.printStackTrace();
         }
     }
@@ -71,6 +73,7 @@ public class CounterIntent {
     private String generateNameOffClass(String id, boolean even, boolean onlineLectures) {
         if(id.equals("0")) return "0.csv";
         String[] split = id.split("-");
+        if(split.length != 3) return "0.csv";
         return split[0]+ (split[1].equals("1") ? (even ? "_even" : "_odd") : "") + (split[2].equals("1") ? (onlineLectures ? "__online_lectures" : "__std") : "") + ".csv";
     }
 }
