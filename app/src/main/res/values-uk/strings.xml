@@ -6,7 +6,7 @@
     <string name="title_activity_settings">Настройки</string>
     <string name="select_class">Виберіть клас</string>
     <string name="font">Шрифт</string>
-    <string name="no_further_events">Кінець тижня</string>
+    <string name="no_further_events">Немає подій</string>
     <string name="epilepticBG">Епілептичний фон</string>
     <string name="epilepticBG_summary">Може розряджати батарею, необхідка перезагрузка</string>
     <string name="settings_title">Кількість майбутніх подій</string>
@@ -25,4 +25,5 @@
     <string name="evenWeek">Парний тиждень</string>
     <string name="ring_summary">Тільки якщо увімкнуті сповіщення</string>
     <string name="font_size">Розмір шрифту</string>
+    <string name="online_lectures">Початок лекцій о 15:30</string>
 </resources>

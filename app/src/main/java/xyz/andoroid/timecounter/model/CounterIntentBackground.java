@@ -36,8 +36,6 @@ public class CounterIntentBackground extends CounterIntent{
                 try {
                     while (!isInterrupted()) {
                         Thread.sleep(1000);
-                        System.out.println("Running BG");
-                        System.out.println("");
                         if(!classCode.equalsIgnoreCase(preferences.getString("class", "0"))) updateClassCode();
                         if(!ringtone.equalsIgnoreCase(preferences.getString("ringtone", "ring"))) updateMusicPlayer();
                         if(enableNotification != preferences.getBoolean("notify",true)) {
@@ -46,15 +44,12 @@ public class CounterIntentBackground extends CounterIntent{
                                 sharedPreferences.edit().putBoolean("running", false).apply();
                                 notifyService.stop();
                                 interrupt();
-                                System.out.println("Interrupt was called.");
                             }
                         }
                         if(evenWeek != preferences.getBoolean("evenWeek", false)) updateClassCode();
-                        if(weekEnded) {
-                            startOfWeek = LocalDateTime.of(now.getYear(), now.getMonth(), now.getDayOfMonth(), 0,0);
-                            startOfWeek = startOfWeek.minusDays(now.getDayOfWeek().compareTo(DayOfWeek.MONDAY));
-                            weekEnded = false;
-                        }
+                        if(onlineLectures != preferences.getBoolean("onlineLectures", false)) updateClassCode();
+                        startOfWeek = LocalDateTime.of(now.getYear(), now.getMonth(), now.getDayOfMonth(), 0,0);
+                        startOfWeek = startOfWeek.minusDays(now.getDayOfWeek().compareTo(DayOfWeek.MONDAY));
                         long secsBetweenNowAndStart = ChronoUnit.SECONDS.between(startOfWeek, now);
                         int index = -1;
                         for(int i = 0;i<events.size();i++) {
@@ -74,12 +69,11 @@ public class CounterIntentBackground extends CounterIntent{
                             if(enableNotification) {
                                 if(notifyService.isRunning()) notificationUtils.showNotification(1, events.get(index).first, TimeUtils.convertFromSeconds(s,true));
                             } else if(notifyService.isRunning()) {
-                                System.out.println("STOP");
                                 notifyService.stop();
                             }
                         } else {
-                            long s = 7*24*60*60-secsBetweenNowAndStart;
-                            weekEnded = true;
+                            long s = 7 * 24 * 60 * 60 - secsBetweenNowAndStart;
+                            notificationUtils.showNotification(1, context.getString(R.string.no_further_events), TimeUtils.convertFromSeconds(s, true));
                         }
                         now = LocalDateTime.now();
                     }

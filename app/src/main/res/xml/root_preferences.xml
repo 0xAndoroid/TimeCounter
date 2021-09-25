@@ -13,6 +13,16 @@
                 app:defaultValue="0"
                 app:useSimpleSummaryProvider="true"/>
 
+        <SwitchPreferenceCompat
+                app:key="evenWeek"
+                app:title="@string/evenWeek"
+                app:defaultValue="false"/>
+
+        <SwitchPreferenceCompat
+                app:key="onlineLectures"
+                app:title="@string/online_lectures"
+                app:defaultValue="false"/>
+
         <SeekBarPreference
                 android:defaultValue="10"
                 android:dialogMessage="@string/settings_dialog_message"
@@ -25,11 +35,6 @@
                 app:key="notify"
                 app:title="@string/enable_notification"
                 app:defaultValue="true"/>
-
-        <SwitchPreferenceCompat
-                app:key="evenWeek"
-                app:title="@string/evenWeek"
-                app:defaultValue="false"/>
 
         <SwitchPreferenceCompat
                 app:key="showBreaks"

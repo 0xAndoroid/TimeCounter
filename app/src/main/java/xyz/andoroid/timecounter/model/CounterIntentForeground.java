@@ -38,10 +38,10 @@ public class CounterIntentForeground extends CounterIntent {
                 try {
                     while (!isInterrupted()) {
                         Thread.sleep(1000);
-                        System.out.println(isServiceRunning("xyz.andoroid.timecounter.NotifyService"));
                         mainActivity.runOnUiThread(() -> {
                             if (!classCode.equalsIgnoreCase(preferences.getString("class", "0"))) updateClassCode();
                             if(evenWeek != preferences.getBoolean("evenWeek", false)) updateClassCode();
+                            if(onlineLectures != preferences.getBoolean("onlineLectures", false)) updateClassCode();
                             if (!font.equalsIgnoreCase(preferences.getString("font", "tnm")) || fontSize != preferences.getInt("fontSize", 50)) updateFont();
                             if(!preferences.getBoolean("notify", true) && enableNotification) enableNotification = false;
                             if (preferences.getBoolean("notify", true) && !enableNotification) {
@@ -54,11 +54,8 @@ public class CounterIntentForeground extends CounterIntent {
                                     }
                                 }
                             }
-                            if (weekEnded) {
-                                startOfWeek = LocalDateTime.of(now.getYear(), now.getMonth(), now.getDayOfMonth(), 0, 0);
-                                startOfWeek = startOfWeek.minusDays(now.getDayOfWeek().compareTo(DayOfWeek.MONDAY));
-                                weekEnded = false;
-                            }
+                            startOfWeek = LocalDateTime.of(now.getYear(), now.getMonth(), now.getDayOfMonth(), 0, 0);
+                            startOfWeek = startOfWeek.minusDays(now.getDayOfWeek().compareTo(DayOfWeek.MONDAY));
                             long secsBetweenNowAndStart = ChronoUnit.SECONDS.between(startOfWeek, now);
                             int index = -1;
                             for (int i = 0; i < events.size(); i++) {
@@ -87,7 +84,6 @@ public class CounterIntentForeground extends CounterIntent {
                             } else {
                                 long s = 7 * 24 * 60 * 60 - secsBetweenNowAndStart;
                                 mainActivity.alterViews(context.getString(R.string.no_further_events), TimeUtils.convertFromSeconds(s, true), "");
-                                weekEnded = true;
                             }
                             now = LocalDateTime.now();
                         });

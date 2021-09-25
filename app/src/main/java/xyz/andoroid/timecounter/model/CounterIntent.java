@@ -22,11 +22,10 @@ public class CounterIntent {
 
     protected String classCode;
     protected boolean enableNotification;
-
-    protected boolean weekEnded = false;
-    protected int lastIndex = -1;
-
     protected boolean evenWeek;
+    protected boolean onlineLectures;
+
+    protected int lastIndex = -1;
 
     protected boolean classCodeJustUpdated = false;
 
@@ -44,21 +43,34 @@ public class CounterIntent {
     protected void updateClassCode() {
         events.clear();
         classCode = preferences.getString("class","0");
+        evenWeek = preferences.getBoolean("evenWeek", false);
+        onlineLectures = preferences.getBoolean("onlineLectures", false);
         classCodeJustUpdated = true;
 
         ReaderUtils readerUtils = new ReaderUtils(context);
         try {
-            String suffix = preferences.getBoolean("evenWeek", false) ? "_even" : "_odd";
-            List<String> allTextLines = readerUtils.readLine(context.getAssets().open(classCode + suffix + ".csv"));
+            List<String> allTextLines = readerUtils.readLine(context.getAssets().open(generateNameOffClass(classCode, evenWeek, onlineLectures)));
             for (String s : allTextLines) {
                 String[] ss = s.split(",");
                 Triplet pr = new Triplet(ss[0], Long.parseLong(ss[1]), Integer.parseInt(ss[2]));
                 events.add(pr);
+            }
+            int i = 0;
+            for (String s : allTextLines) {
+                if(i >= 20) break;
+                String[] ss = s.split(",");
+                Triplet pr = new Triplet(ss[0], Long.parseLong(ss[1])+7*24*60*60, Integer.parseInt(ss[2]));
+                events.add(pr);
+                i++;
             }
         } catch (IOException ex) {
             ex.printStackTrace();
         }
     }
 
-
+    private String generateNameOffClass(String id, boolean even, boolean onlineLectures) {
+        if(id.equals("0")) return "0.csv";
+        String[] split = id.split("-");
+        return split[0]+ (split[1].equals("1") ? (even ? "_even" : "_odd") : "") + (split[2].equals("1") ? (onlineLectures ? "__online_lectures" : "__std") : "") + ".csv";
+    }
 }
