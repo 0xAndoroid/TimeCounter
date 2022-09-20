@@ -7,4 +7,4 @@ tcapi.andoroid.xyz/getversion.php?class=%CLASSCODE% - get current version of cla
 tcapi.andoroid.xyz/getclass.php?class=%CLASSCODE%.csv - get class file
 
 Download on Google play
-<a href="http://tc.andoroid.xyz">Download</a>
+<a href="https://play.google.com/store/apps/details?id=xyz.andoroid.timecounter">Download</a>
